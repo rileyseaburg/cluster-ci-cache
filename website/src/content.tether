@@ -14,10 +14,21 @@ fn types_section() {
 fn quickstart_section() {
     return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-3xl mx-auto'>" +
         "<h2 class='text-3xl font-bold text-center mb-8'>Quick Start</h2>" +
-        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden mb-4'><pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
-        cmt("&gt; Deploy to Kubernetes") + "\n" +
-        "kubectl apply -k deploy/k8s/\n\n" +
-        cmt("&gt; Restore Cargo cache") + "\n" +
+        "<p class='text-center text-slate-400 mb-6'>Install in one command, deploy in another:</p>" +
+        "<div class='rounded-xl border border-green-500/30 bg-green-500/5 overflow-hidden mb-4'>" +
+        "<div class='px-4 py-2 border-b border-green-500/20 text-xs text-green-500 font-semibold uppercase tracking-wider'>1. Install the CLI</div>" +
+        "<pre class='p-4 overflow-x-auto text-sm text-green-400 font-mono leading-relaxed'>" +
+        "curl -fsSL https://github.com/rileyseaburg/cluster-ci-cache/releases/latest/download/install.sh | bash\n" +
+        "</pre></div>" +
+        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden mb-4'>" +
+        "<div class='px-4 py-2 border-b border-white/10 text-xs text-slate-500 font-semibold uppercase tracking-wider'>2. Deploy to Kubernetes</div>" +
+        "<pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
+        "kubectl apply -k deploy/k8s/\n" +
+        "</pre></div>" +
+        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden mb-4'>" +
+        "<div class='px-4 py-2 border-b border-white/10 text-xs text-slate-500 font-semibold uppercase tracking-wider'>3. Use in CI</div>" +
+        "<pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
+        cmt("&gt; Restore cache") + "\n" +
         "ci-cache restore --cache-type cargo \\\n" +
         "  --key cargo-$LOCK_HASH \\\n" +
         "  --paths ~/.cargo/registry,~/.cargo/git,target\n\n" +
@@ -27,8 +38,9 @@ fn quickstart_section() {
         "  --key cargo-$LOCK_HASH \\\n" +
         "  --paths ~/.cargo/registry,~/.cargo/git,target\n" +
         "</pre></div>" +
-        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden'><pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
-        cmt("&gt; Docker image") + "\n" +
+        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden'>" +
+        "<div class='px-4 py-2 border-b border-white/10 text-xs text-slate-500 font-semibold uppercase tracking-wider'>Docker image</div>" +
+        "<pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
         "docker pull registry.quantum-forge.net/cluster-ci-cache/ci-cache:v0.1.0\n" +
         "</pre></div>" +
         "</div></section>"
@@ -56,16 +68,17 @@ fn metrics_section() {
         "ci_cache_bytes_uploaded_total 249\n" +
         "ci_cache_bytes_downloaded_total 498\n" +
         "ci_cache_blob_dedup_hits_total 1\n" +
-        "ci_cache_restore_duration_seconds_bucket{le=\"0.5\"} 2\n" +
         "</pre></div>" +
         "</div></section>"
 }
 
 fn footer_section(github_url, release_url, version) {
     return "<footer class='border-t border-white/5 py-12 px-6 text-center text-slate-500'>" +
-        "<p><a href='" + github_url + "' class='text-blue-400 hover:text-blue-300'>GitHub</a> · " +
+        "<p class='mb-3'>" +
+        "<a href='https://cicache.spotlessbinco.com' class='text-slate-400 hover:text-white'>Website</a> · " +
+        "<a href='" + github_url + "' class='text-blue-400 hover:text-blue-300'>GitHub</a> · " +
         "<a href='" + release_url + "' class='text-blue-400 hover:text-blue-300'>Releases</a> · v" + version + "</p>" +
-        "<p class='mt-3 text-sm'>Built with Rust · Designed for Kubernetes · Made for CI</p>" +
+        "<p class='text-sm'>Built with Rust · Designed for Kubernetes · Made for CI</p>" +
         "</footer>"
 }
 
@@ -88,7 +101,7 @@ fn handle(req) {
     }
     if route == "/robots.txt" { return text_resp(200, "User-agent: *\nAllow: /\n") }
     if route == "/favicon.ico" { return text_resp(404, "") }
-    return html_resp(404, "<h1>404</h1><p>Not found</p>")
+    return html_resp(404, "<h1 class='text-center pt-20 text-2xl text-slate-400'>404 — Not Found</h1>")
 }
 
 fn main() {
