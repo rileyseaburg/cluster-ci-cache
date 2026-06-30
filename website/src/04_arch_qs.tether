@@ -1,0 +1,46 @@
+fn architecture() {
+    return "<section class='section' id='architecture'>" +
+        "<h2>Architecture</h2>" +
+        "<p class='lead'>A central server manages manifests and content-addressed blobs. A node-local agent provides health and locality for future caching layers. The CLI runs inside CI jobs.</p>" +
+        "<div class='codeblock'><div class='bar'>" +
+        "<span class='dot' style='background:#ef4444'></span>" +
+        "<span class='dot' style='background:#eab308'></span>" +
+        "<span class='dot' style='background:#22c55e'></span>" +
+        "<span class='filename'>topology</span></div><pre style='font-size:12px;line-height:1.8;color:var(--text2)'>" +
+        "  CI Job Pod                        ci-cache-server                   Backend\n" +
+        "  +-----------+                     +------------------+              +----------+\n" +
+        "  | ci-cache  |--- 1. restore ----->| manifest lookup  |--- get ----->| FS / PVC |\n" +
+        "  | (CLI)     |<--- manifest -------| dedup check      |<--- blob ----| S3/MinIO |\n" +
+        "  |           |--- 2. save -------->| session create   |              +----------+\n" +
+        "  |           |--- upload blob ---->| verify + store   |\n" +
+        "  |           |--- finish --------->| atomic publish   |\n" +
+        "  +-----------+                     +------------------+\n" +
+        "                                          |\n" +
+        "                                   +------------------+\n" +
+        "                                   | ci-cache-agent   |\n" +
+        "                                   | (DaemonSet)      |\n" +
+        "                                   +------------------+" +
+        "</pre></div></section>"
+}
+
+fn quickstart() {
+    return "<section class='section' id='quickstart'>" +
+        "<h2>Quick Start</h2>" +
+        "<p class='lead'>Three steps: install, deploy, use. Works with any CI runner inside Kubernetes.</p>" +
+        code_block("terminal", "<span class='c'>// Install the CLI</span>\ncurl -fsSL https://github.com/rileyseaburg/cluster-ci-cache/releases/latest/download/install.sh | bash") +
+        code_block("terminal", "<span class='c'>// Deploy to Kubernetes</span>\nkubectl apply -k deploy/k8s/") +
+        code_block("shell", "<span class='c'>// Use in CI</span>\nexport CI_CACHE_SERVER=http://ci-cache-server.ci-cache.svc.cluster.local:8080\nLOCK_HASH=$(sha256sum Cargo.lock | cut -d' ' -f1)\n\nci-cache restore \\\n  --cache-type cargo \\\n  --key cargo-linux-$LOCK_HASH \\\n  --paths ~/.cargo/registry,~/.cargo/git,target\n\ncargo build --release\n\n<span class='c'>// Save after build</span>\nci-cache save \\\n  --cache-type cargo \\\n  --key cargo-linux-$LOCK_HASH \\\n  --paths ~/.cargo/registry,~/.cargo/git,target") +
+        "<p style='color:var(--text3);font-size:14px;margin-top:16px'>" +
+        "Supports cargo, npm, pnpm, yarn, docker, and generic cache types. " +
+        "See <a href='https://github.com/rileyseaburg/cluster-ci-cache#cache-types'>documentation</a> for all options." +
+        "</p></section>"
+}
+
+fn code_block(filename, content) {
+    return "<div class='codeblock'><div class='bar'>" +
+        "<span class='dot' style='background:#ef4444'></span>" +
+        "<span class='dot' style='background:#eab308'></span>" +
+        "<span class='dot' style='background:#22c55e'></span>" +
+        "<span class='filename'>" + filename + "</span></div><pre>" +
+        content + "</pre></div>"
+}

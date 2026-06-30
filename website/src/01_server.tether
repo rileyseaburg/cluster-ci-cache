@@ -1,0 +1,52 @@
+// Cluster CI Cache website — TetherScript HTTP server.
+
+fn content_type(path) {
+    if path.ends_with(".html") { return "text/html; charset=utf-8" }
+    if path.ends_with(".css") { return "text/css; charset=utf-8" }
+    if path.ends_with(".js") { return "application/javascript; charset=utf-8" }
+    if path.ends_with(".json") { return "application/json" }
+    if path.ends_with(".txt") { return "text/plain; charset=utf-8" }
+    if path.ends_with(".svg") { return "image/svg+xml" }
+    if path.ends_with(".ico") { return "image/x-icon" }
+    if path.ends_with(".png") { return "image/png" }
+    return "application/octet-stream"
+}
+
+fn response(status, body, ct) {
+    let resp = map()
+    resp.status = status
+    resp.body = body
+    let headers = map()
+    headers["content-type"] = ct
+    resp.headers = headers
+    return resp
+}
+
+fn ok(body, ct) { return response(200, body, ct) }
+fn html(body) { return ok(body, "text/html; charset=utf-8") }
+fn text(body) { return ok(body, "text/plain; charset=utf-8") }
+
+fn static_file(req) {
+    let path = req.path
+    if path.contains("..") { return text("forbidden") }
+    let body = fs.read("." + path)
+    if body.is_err() { return text("not found") }
+    return ok(body.unwrap(), content_type(path))
+}
+
+fn handle(req) {
+    let route = req.path
+    if route.starts_with("/static/") { return static_file(req) }
+    if req.method == "GET" && route == "/" {
+        return html(render("0.1.0",
+            "https://github.com/rileyseaburg/cluster-ci-cache",
+            "https://github.com/rileyseaburg/cluster-ci-cache/releases/tag/v0.1.0"))
+    }
+    if route == "/robots.txt" { return text("User-agent: *\nAllow: /\n") }
+    return html("<div style='font-family:monospace;padding:80px;text-align:center;color:#94a3b8'><div style='font-size:48px;font-weight:200'>404</div><p>Not found</p></div>")
+}
+
+fn main() {
+    println("Starting Cluster CI Cache website on :8787")
+    http_serve(8787, handle)
+}

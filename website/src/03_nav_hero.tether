@@ -1,0 +1,53 @@
+fn nav(github_url, release_url) {
+    return "<nav class='nav'>" +
+        "<a href='/' class='nav-brand'>" + logo_svg() + "Cluster CI Cache</a>" +
+        "<div class='nav-links'>" +
+        "<a href='#features'>Features</a>" +
+        "<a href='#architecture'>Architecture</a>" +
+        "<a href='#quickstart'>Quick Start</a>" +
+        "<a href='" + github_url + "'>GitHub</a>" +
+        "</div></nav>"
+}
+
+fn logo_svg() {
+    return "<svg viewBox='0 0 32 32' fill='none' xmlns='http://www.w3.org/2000/svg'>" +
+        "<rect x='2' y='2' width='28' height='28' rx='6' fill='#1e3a5f' stroke='#3b82f6' stroke-width='1.5'/>" +
+        "<path d='M9 20 L13 10 L16 16 L19 10 L23 20' stroke='#60a5fa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/>" +
+        "<circle cx='16' cy='22' r='1.5' fill='#22c55e'/>" +
+        "</svg>"
+}
+
+fn hero(version, release_url) {
+    return "<header class='hero' id='top'>" +
+        "<h1>Content-addressed CI<br>build cache for Kubernetes</h1>" +
+        "<p>Deduplicated, secure, backend-agnostic caching for Rust, npm, and Docker workloads. Runs inside your cluster with zero external dependencies.</p>" +
+        "<div class='install-box' onclick='navigator.clipboard.writeText(this.querySelector(\"code\").textContent.trim())'>" +
+        "<span class='prompt'>$</span>" +
+        "<code>curl -fsSL https://github.com/rileyseaburg/cluster-ci-cache/releases/latest/download/install.sh | bash</code>" +
+        "<span class='copy'>COPY</span>" +
+        "</div>" +
+        "<p class='install-hint'>Installs ci-cache CLI, server, and agent. Click to copy.</p>" +
+        "<div class='hero-btns'>" +
+        "<a href='" + release_url + "' class='btn btn-blue'>Download v" + version + "</a>" +
+        "<a href='#quickstart' class='btn btn-ghost'>Documentation</a>" +
+        "</div></header>"
+}
+
+fn features() {
+    return "<section class='section' id='features'>" +
+        "<h2>Features</h2>" +
+        "<p class='lead'>Not a key-value store. A content-addressed artifact fabric with manifest-level deduplication, digest verification, and path-traversal hardening.</p>" +
+        "<div class='grid'>" +
+        feat("storage", "Content-addressed blobs", "Every blob stored by its SHA-256 digest. Identical content across cache keys, namespaces, and types deduplicates automatically — store once, reference everywhere.") +
+        feat("security", "Archive hardening", "Custom archive format with path traversal protection, absolute path rejection, symlink skipping, decompression bomb limits, and digest verification on upload and restore.") +
+        feat("backends", "Backend-agnostic", "Filesystem and PVC backend for zero-dependency local dev. S3 and MinIO backend for production shared storage. Same HTTP API regardless of backend.") +
+        feat("k8s", "Kubernetes-native", "Deployment with replicas, DaemonSet agent, ServiceAccount, RBAC, ConfigMap, NetworkPolicy, PVC. Health and readiness probes. Helm chart included.") +
+        feat("metrics", "Observable", "Prometheus metrics for hits, misses, bytes transferred, dedup ratio, and latency histograms. Structured JSON logs. Standard healthz and readyz endpoints.") +
+        feat("concurrency", "Concurrency-safe", "Atomic manifest publishing via temp-file-and-rename. Save sessions prevent partial manifests. Idempotent blob storage. No distributed locks required for correctness.") +
+        "</div></section>"
+}
+
+fn feat(label, title, desc) {
+    return "<div class='feat'><span class='label'>" + label + "</span>" +
+        "<h3>" + title + "</h3><p>" + desc + "</p></div>"
+}

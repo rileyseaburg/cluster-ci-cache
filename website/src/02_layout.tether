@@ -1,0 +1,95 @@
+fn render(version, github_url, release_url) {
+    let body = nav(github_url, release_url) +
+        hero(version, release_url) +
+        features() +
+        architecture() +
+        quickstart() +
+        stats() +
+        community(github_url, release_url)
+    return doc(version, github_url, release_url, body)
+}
+
+fn doc(version, github_url, release_url, body) {
+    return "<!DOCTYPE html><html lang='en'><head>" +
+        "<meta charset='UTF-8'>" +
+        "<meta name='viewport' content='width=device-width, initial-scale=1'>" +
+        "<title>Cluster CI Cache — In-Cluster CI Build Cache for Kubernetes</title>" +
+        "<meta name='description' content='A Kubernetes-native, content-addressed build cache for Rust, npm, and Docker workloads.'>" +
+        styles() +
+        "</head><body><div class='container'>" + body + "</div></body></html>"
+}
+
+fn styles() {
+    return "<style>" +
+        ":root{--bg:#0b1120;--surface:#131c31;--border:#1e2d4a;--text:#e2e8f0;" +
+        "--text2:#94a3b8;--text3:#64748b;--blue:#3b82f6;--blue2:#60a5fa;" +
+        "--green:#22c55e;--cyan:#06b6d4;--radius:8px}" +
+        "*{margin:0;padding:0;box-sizing:border-box}" +
+        "body{background:var(--bg);color:var(--text);font-family:-apple-system,'Segoe UI',Roboto,sans-serif;" +
+        "line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}" +
+        "code,pre,.mono{font-family:'SF Mono','Fira Code','Consolas',monospace}" +
+        "a{color:var(--blue2);text-decoration:none}" +
+        ".container{max-width:920px;margin:0 auto;padding:0 24px}" +
+        ".section{padding:72px 0;border-top:1px solid var(--border)}" +
+        ".section h2{font-size:24px;font-weight:600;letter-spacing:-0.3px;margin-bottom:8px}" +
+        ".section .lead{color:var(--text2);font-size:15px;margin-bottom:32px;max-width:560px}" +
+        styles_nav() + styles_hero() + styles_grid() + styles_code() + styles_stats() +
+        "</style>"
+}
+
+fn styles_nav() {
+    return ".nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}" +
+        ".nav-brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:15px}" +
+        ".nav-brand svg{width:28px;height:28px}" +
+        ".nav-links{display:flex;gap:24px;font-size:14px}" +
+        ".nav-links a{color:var(--text2);transition:color .15s}" +
+        ".nav-links a:hover{color:var(--text)}"
+}
+
+fn styles_hero() {
+    return ".hero{padding:80px 0 60px}" +
+        ".hero h1{font-size:38px;font-weight:700;letter-spacing:-1px;line-height:1.2;margin-bottom:16px}" +
+        ".hero p{font-size:18px;color:var(--text2);max-width:520px;margin-bottom:32px}" +
+        ".install-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);" +
+        "padding:14px 16px;display:flex;align-items:center;gap:12px;max-width:600px;margin-bottom:16px;" +
+        "cursor:pointer;transition:border-color .15s}" +
+        ".install-box:hover{border-color:var(--blue)}" +
+        ".install-box .prompt{color:var(--text3);user-select:none}" +
+        ".install-box code{color:var(--green);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}" +
+        ".install-box .copy{color:var(--text3);font-size:12px;white-space:nowrap}" +
+        ".install-hint{color:var(--text3);font-size:13px}" +
+        ".hero-btns{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}" +
+        ".btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:var(--radius);" +
+        "font-size:14px;font-weight:500;transition:all .15s}" +
+        ".btn-blue{background:var(--blue);color:#fff}" +
+        ".btn-blue:hover{background:var(--blue2)}" +
+        ".btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border)}" +
+        ".btn-ghost:hover{border-color:var(--text3);color:var(--text)}"
+}
+
+fn styles_grid() {
+    return ".grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);" +
+        "border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}" +
+        ".feat{background:var(--bg);padding:28px 24px}" +
+        ".feat h3{font-size:15px;font-weight:600;margin-bottom:6px}" +
+        ".feat p{font-size:14px;color:var(--text2);line-height:1.6}" +
+        ".feat .label{display:inline-block;font-family:monospace;font-size:11px;color:var(--blue2);" +
+        "text-transform:uppercase;letter-spacing:0.5px;margin-bottom:10px}"
+}
+
+fn styles_code() {
+    return ".codeblock{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);" +
+        "margin-bottom:16px;overflow:hidden}" +
+        ".codeblock .bar{display:flex;align-items:center;gap:6px;padding:10px 14px;border-bottom:1px solid var(--border)}" +
+        ".codeblock .bar span.dot{width:10px;height:10px;border-radius:50%}" +
+        ".codeblock .bar .filename{margin-left:8px;font-size:12px;color:var(--text3);font-family:monospace}" +
+        ".codeblock pre{padding:16px;font-size:13px;line-height:1.7;color:var(--text);overflow-x:auto}" +
+        ".codeblock .c{color:var(--text3)}"
+}
+
+fn styles_stats() {
+    return ".stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}" +
+        ".stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;text-align:center}" +
+        ".stat .num{font-family:monospace;font-size:28px;font-weight:500;color:var(--text)}" +
+        ".stat .lbl{color:var(--text3);font-size:13px;margin-top:4px}"
+}

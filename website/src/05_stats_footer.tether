@@ -1,0 +1,46 @@
+fn stats() {
+    return "<section class='section' id='stats'>" +
+        "<h2>Project Status</h2>" +
+        "<p class='lead'>Deployed and verified on a 7-node Kubernetes cluster. E2E cache miss, save, hit, and restore cycle confirmed.</p>" +
+        "<div class='stats'>" +
+        stat_box("6", "Rust crates") +
+        stat_box("3,424", "Lines of code") +
+        stat_box("13", "Tests passing") +
+        stat_box("101 MB", "Container image") +
+        stat_box("2 + 6", "Server + agent pods") +
+        stat_box("v0.1.0", "First release") +
+        "</div>" +
+        "<div style='margin-top:32px'><div class='codeblock'><div class='bar'>" +
+        "<span style='background:#ef4444'></span><span style='background:#eab308'></span><span style='background:#22c55e'></span>" +
+        "<span class='filename'>metrics</span></div><pre style='font-size:12px;color:var(--text2)'>" +
+        "ci_cache_restore_requests_total 2\n" +
+        "ci_cache_save_requests_total 1\n" +
+        "ci_cache_hits_total 1\n" +
+        "ci_cache_misses_total 1\n" +
+        "ci_cache_bytes_uploaded_total 249\n" +
+        "ci_cache_bytes_downloaded_total 498\n" +
+        "ci_cache_blob_dedup_hits_total 1\n" +
+        "ci_cache_backend_errors_total 0" +
+        "</pre></div></div>" +
+        "</section>"
+}
+
+fn stat_box(num, lbl) {
+    return "<div class='stat'><div class='num'>" + num + "</div><div class='lbl'>" + lbl + "</div></div>"
+}
+
+fn community(github_url, release_url) {
+    return "<footer class='section' style='text-align:center;padding-bottom:48px'>" +
+        "<h2>Get Started</h2>" +
+        "<p class='lead' style='margin:0 auto 28px'>Open source. MIT and Apache-2.0 dual licensed.</p>" +
+        "<div class='hero-btns' style='justify-content:center'>" +
+        "<a href='" + release_url + "' class='btn btn-blue'>Download v0.1.0</a>" +
+        "<a href='" + github_url + "' class='btn btn-ghost'>View on GitHub</a>" +
+        "</div>" +
+        "<div style='margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--text3);font-size:13px'>" +
+        "<a href='https://cicache.spotlessbinco.com'>Cluster CI Cache</a> &middot; " +
+        "<a href='" + github_url + "'>GitHub</a> &middot; " +
+        "<a href='" + release_url + "'>Releases</a> &middot; " +
+        "Built in Rust for Kubernetes" +
+        "</div></footer>"
+}
