@@ -1,0 +1,30 @@
+// sections_hero.tether — hero and badge row
+
+fn hero(version, github_url, release_url) {
+    return "<div class=\"hero\">" +
+        "<h1>🚀 <span class=\"gradient\">Cluster CI Cache</span></h1>" +
+        "<p>Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, " +
+        "and Docker/BuildKit — native to Kubernetes, boring to operate.</p>" +
+        "<div class=\"cta\">" +
+        "<a class=\"btn btn-primary\" href=\"" + release_url + "\">⬇ Download v" + version + "</a>" +
+        "<a class=\"btn btn-secondary\" href=\"" + github_url + "\">📖 View on GitHub</a>" +
+        "</div></div>"
+}
+
+fn badges_row(image_size, tests, server_replicas, agent_pods, cluster_nodes) {
+    return "<div class=\"badges wrap\">" +
+        badge("dot-green", "Rust 1.95") +
+        badge("dot-blue", "K8s 1.30+") +
+        badge("dot-green", image_size + " image") +
+        badge("dot-blue", tests + " tests") +
+        badge("dot-green", server_replicas + " replicas") +
+        badge("dot-orange", agent_pods + " agents") +
+        badge("dot-purple", cluster_nodes + " nodes") +
+        badge("dot-green", "E2E verified") +
+        badge("dot-orange", "zstd") +
+        "</div>"
+}
+
+fn badge(dot_class, text) {
+    return "<span class=\"badge\"><span class=\"dot " + dot_class + "\"></span>" + text + "</span>"
+}

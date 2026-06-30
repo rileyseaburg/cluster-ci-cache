@@ -1,0 +1,63 @@
+fn hero(version, github_url, release_url) {
+    return "<div class='hero'>" +
+        "<h1>🚀 <span class='grd'>Cluster CI Cache</span></h1>" +
+        "<p>Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, " +
+        "and Docker/BuildKit — native to Kubernetes, boring to operate.</p>" +
+        "<div class='cta'>" +
+        "<a class='btn bp' href='" + release_url + "'>⬇ Download v" + version + "</a>" +
+        "<a class='btn bs' href='" + github_url + "'>📖 GitHub</a>" +
+        "</div></div>"
+}
+
+fn badge(dot, text) {
+    return "<span class='b'><span class='d " + dot + "'></span>" + text + "</span>"
+}
+
+fn badges(sz, tests, srv, agt, nodes) {
+    return "<div class='bdg w'>" +
+        badge("dg", "Rust 1.95") +
+        badge("db", "K8s 1.30+") +
+        badge("dg", sz + " image") +
+        badge("db", tests + " tests") +
+        badge("dg", srv + " replicas") +
+        badge("do", agt + " agents") +
+        badge("dp", nodes + " nodes") +
+        badge("dg", "E2E verified") +
+        badge("do", "zstd") +
+        "</div>"
+}
+
+fn card(ic, title, desc) {
+    return "<div class='card'><div class='ic'>" + ic + "</div>" +
+        "<h3>" + title + "</h3><p>" + desc + "</p></div>"
+}
+
+fn problem() {
+    return "<section><div class='w'><h2>The Problem It Solves</h2>" +
+        "<div class='grid'>" +
+        card("❌", "Without Cache", "CI starts cold, downloads every crate, compiles from scratch. 5 minutes per build wasted.") +
+        card("✅", "With Cluster CI Cache", "In-cluster restore in under 1 second. Warm builds. 20 seconds total. Dedup keeps storage flat.") +
+        "</div></div></section>"
+}
+
+fn features() {
+    return "<section><div class='w'><h2>Key Features</h2><div class='grid'>" +
+        card("🔒", "Security-First", "Custom archive format. Path traversal protection, decompression bomb prevention, sha256 digest verification.") +
+        card("📦", "Content-Addressed", "Blobs stored by sha256. Dedup across keys, namespaces, types. Store once, reference everywhere.") +
+        card("☸️", "K8s-Native", "Deployment + DaemonSet + RBAC. Health probes, Prometheus metrics, Helm chart included.") +
+        card("🔌", "Backend-Agnostic", "Filesystem/PVC for dev, S3/MinIO for production. Same API regardless of backend.") +
+        card("⚡", "Fast Restores", "zstd compression, dedup skips, in-cluster network. Restore under 1 second for typical cache.") +
+        card("📊", "Observable", "Prometheus metrics: hits, misses, bytes, dedup hits, latency histograms.") +
+        "</div></div></section>"
+}
+
+fn types() {
+    return "<section><div class='w'><h2>Cache Types</h2><div class='grid'>" +
+        card("🦀", "Rust / Cargo", "~/.cargo/registry, ~/.cargo/git, optional target/. Keyed on Cargo.lock hash.") +
+        card("📦", "npm", "~/.npm cache. Keyed on package-lock.json hash.") +
+        card("📦", "pnpm", "pnpm store. Keyed on pnpm-lock.yaml hash.") +
+        card("🧶", "yarn", "yarn cache dir. Keyed on yarn.lock hash.") +
+        card("🐳", "Docker / BuildKit", "BuildKit registry cache. CLI helpers generate --cache-from/--cache-to flags.") +
+        card("📁", "Generic", "Any directory. Custom toolchains, LLVM artifacts, etc.") +
+        "</div></div></section>"
+}

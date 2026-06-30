@@ -1,0 +1,14 @@
+// footer.tether — footer section (simplified quoting)
+
+fn footer(github_url, release_url, version) {
+    let gh_link = "<a href=" + single_quote(github_url) + ">GitHub Repository</a>"
+    let rel_link = "<a href=" + single_quote(release_url) + ">Releases</a>"
+    return "<footer><div class='wrap'><p>" +
+        gh_link + " &middot; " + rel_link + " &middot; v" + version + "</p>" +
+        "<p style='margin-top:12px'>Built with Rust &middot; Designed for Kubernetes &middot; Made for CI</p>" +
+        "</div></footer></body></html>"
+}
+
+fn single_quote(s) {
+    return "'" + s + "'"
+}

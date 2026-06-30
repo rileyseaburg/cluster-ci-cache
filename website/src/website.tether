@@ -1,0 +1,24 @@
+fn generate(version, github_url, release_url, docker_image,
+            image_size, tests, server_replicas, agent_pods, cluster_nodes) {
+
+    let html = head(version) +
+        hero(version, github_url, release_url) +
+        badges(image_size, tests, server_replicas, agent_pods, cluster_nodes) +
+        problem() +
+        features() +
+        types() +
+        quickstart(docker_image) +
+        metrics() +
+        footer(github_url, release_url, version)
+
+    return Ok(html)
+}
+
+fn head(version) {
+    return "<!DOCTYPE html><html lang='en'><head>" +
+        "<meta charset='UTF-8'>" +
+        "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+        "<title>Cluster CI Cache v" + version + "</title>" +
+        styles() +
+        "</head><body>"
+}

@@ -1,0 +1,94 @@
+// sections_content.tether — problem, features, cache types, quickstart, metrics, footer
+
+fn problem_section() {
+    return "<section><div class=\"wrap\"><h2>The Problem It Solves</h2>" +
+        "<div class=\"grid\">" +
+        card("❌", "Without Cache", "CI starts cold, downloads every crate, compiles from scratch. 5 minutes wasted per build, repeated 100x/day.") +
+        card("✅", "With Cluster CI Cache", "In-cluster restore in under 1 second. Warm incremental builds. 20 seconds total. Deduplication keeps storage flat.") +
+        "</div></div></section>"
+}
+
+fn features_grid() {
+    return "<section><div class=\"wrap\"><h2>Key Features</h2>" +
+        "<div class=\"grid\">" +
+        card("🔒", "Security-First", "Custom archive format with path traversal protection, decompression bomb prevention, and sha256 digest verification.") +
+        card("📦", "Content-Addressed", "Blobs stored by sha256 digest. Deduplication across cache keys, namespaces, and cache types. Store once, reference everywhere.") +
+        card("☸️", "K8s-Native", "Deployment + DaemonSet + Service + RBAC. Health probes, Prometheus metrics, structured JSON logs. Helm chart included.") +
+        card("🔌", "Backend-Agnostic", "Filesystem/PVC for local dev, S3/MinIO for production. Same API regardless of backend.") +
+        card("⚡", "Fast Restores", "zstd compression, dedup skips, in-cluster network. Typical restore under 1 second for 50MB cache.") +
+        card("📊", "Observable", "Full Prometheus metrics: hits, misses, bytes uploaded/downloaded, dedup hits, latency histograms.") +
+        "</div></div></section>"
+}
+
+fn cache_types_section() {
+    return "<section><div class=\"wrap\"><h2>Supported Cache Types</h2>" +
+        "<div class=\"grid\">" +
+        card("🦀", "Rust / Cargo", "~/.cargo/registry, ~/.cargo/git, optional target/. Keyed on Cargo.lock hash.") +
+        card("📦", "npm", "~/.npm cache. Keyed on package-lock.json hash.") +
+        card("📦", "pnpm", "pnpm content-addressable store. Keyed on pnpm-lock.yaml hash.") +
+        card("🧶", "yarn", "yarn cache directory. Keyed on yarn.lock hash.") +
+        card("🐳", "Docker / BuildKit", "BuildKit registry-type cache. CLI helpers generate --cache-from/--cache-to flags.") +
+        card("📁", "Generic", "Any arbitrary directory. Use for custom toolchains, LLVM artifacts, etc.") +
+        "</div></div></section>"
+}
+
+fn quick_start(docker_image, registry) {
+    return "<section><div class=\"wrap\"><h2>Quick Start</h2>" +
+        "<div class=\"codeblock\"><pre>" +
+        "<span style=\"color:#8b949e\"># Deploy to Kubernetes</span>\n" +
+        "kubectl apply -k deploy/k8s/\n\n" +
+        "<span style=\"color:#8b949e\"># Restore Cargo cache</span>\n" +
+        "ci-cache restore --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n\n" +
+        "cargo build --release\n\n" +
+        "<span style=\"color:#8b949e\"># Save cache</span>\n" +
+        "ci-cache save --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n" +
+        "</pre></div>" +
+        "<div class=\"codeblock\"><pre>" +
+        "<span style=\"color:#8b949e\"># Docker image</span>\n" +
+        "docker pull " + docker_image + "\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn metrics_section() {
+    return "<section><div class=\"wrap\"><h2>Live Stats</h2>" +
+        "<div class=\"stats\">" +
+        stat("6", "Rust crates") +
+        stat("3,424", "Lines of code") +
+        stat("13", "Tests passing") +
+        stat("101 MB", "Image size") +
+        stat("7", "Layers") +
+        stat("2x + 6x", "Pods running") +
+        "</div>" +
+        "<div class=\"codeblock\"><pre>" +
+        "<span style=\"color:#8b949e\"># Prometheus metrics</span>\n" +
+        "ci_cache_hits_total 1\n" +
+        "ci_cache_misses_total 1\n" +
+        "ci_cache_bytes_uploaded_total 249\n" +
+        "ci_cache_restore_duration_seconds_bucket{le=\"0.1\"} 2\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn footer(github_url, release_url, version) {
+    return "<footer><div class=\"wrap\">" +
+        "<p><a href=\"" + github_url + "\">GitHub Repository</a> · " +
+        "<a href=\"" + release_url + "\">Releases</a> · " +
+        "v" + version + "</p>" +
+        "<p style=\"margin-top:12px\">Built with ❤️ in Rust · Designed for Kubernetes · Made for CI</p>" +
+        "</div></footer></body></html>"
+}
+
+fn card(icon, title, desc) {
+    return "<div class=\"card\"><div class=\"icon\">" + icon + "</div>" +
+        "<h3>" + title + "</h3><p>" + desc + "</p></div>"
+}
+
+fn stat(num, label) {
+    return "<div class=\"stat\"><div class=\"num\">" + num + "</div>" +
+        "<div class=\"label\">" + label + "</div></div>"
+}

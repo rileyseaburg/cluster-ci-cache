@@ -1,0 +1,223 @@
+// Cluster CI Cache website — TetherScript HTTP server.
+// Run: tetherscript run --grant-fs . server.tether
+
+fn content_type(path) {
+    if path.ends_with(".html") { return "text/html; charset=utf-8" }
+    if path.ends_with(".css") { return "text/css; charset=utf-8" }
+    if path.ends_with(".js") { return "application/javascript; charset=utf-8" }
+    if path.ends_with(".json") { return "application/json" }
+    if path.ends_with(".txt") { return "text/plain; charset=utf-8" }
+    if path.ends_with(".svg") { return "image/svg+xml" }
+    if path.ends_with(".ico") { return "image/x-icon" }
+    if path.ends_with(".png") { return "image/png" }
+    return "application/octet-stream"
+}
+
+fn response(status, body, content_type_value) {
+    let resp = map()
+    resp.status = status
+    resp.body = body
+    let headers = map()
+    headers["content-type"] = content_type_value
+    resp.headers = headers
+    return resp
+}
+
+fn html_resp(status, body) { return response(status, body, "text/html; charset=utf-8") }
+fn text_resp(status, body) { return response(status, body, "text/plain; charset=utf-8") }
+
+fn card(icon, title, desc) {
+    return "<div class='rounded-xl border border-white/10 bg-white/5 p-6 transition hover:border-white/20 hover:bg-white/10'>" +
+        "<div class='text-3xl mb-3'>" + icon + "</div>" +
+        "<h3 class='text-base font-semibold text-white mb-2'>" + title + "</h3>" +
+        "<p class='text-sm text-slate-400 leading-relaxed'>" + desc + "</p></div>"
+}
+
+fn stat(num, label) {
+    return "<div class='rounded-xl border border-white/10 bg-white/5 p-5 text-center'>" +
+        "<div class='text-2xl font-extrabold bg-gradient-to-r from-orange-400 to-purple-400 bg-clip-text text-transparent'>" + num + "</div>" +
+        "<div class='mt-1 text-xs text-slate-500 uppercase tracking-wider'>" + label + "</div></div>"
+}
+
+fn badge(dot, text) {
+    return "<span class='inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300'>" +
+        "<span class='h-2 w-2 rounded-full " + dot + "'></span>" + text + "</span>"
+}
+
+fn code_block(lines) {
+    let mut html = "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden my-4'><pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>"
+    for line in lines {
+        html = html + line + "\n"
+    }
+    html = html + "</pre></div>"
+    return html
+}
+
+fn cmt(text) {
+    return "<span class='text-slate-500'>" + text + "</span>"
+}
+fn page(version, github_url, release_url) {
+    return "<!doctype html><html lang='en' class='scroll-smooth'>" +
+        "<head>" +
+        "<meta charset='UTF-8'>" +
+        "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+        "<title>Cluster CI Cache — In-Cluster Build Cache for Kubernetes</title>" +
+        "<meta name='description' content='Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/BuildKit — native to Kubernetes.'>" +
+        "<script src='https://cdn.tailwindcss.com'></script>" +
+        "<style>body{background:radial-gradient(circle at 20% 0%,rgba(222,165,132,.12),transparent 32rem),radial-gradient(circle at 85% 15%,rgba(188,140,255,.10),transparent 28rem),#0d1117}</style>" +
+        "</head>" +
+        "<body class='min-h-screen text-slate-100 antialiased'>" +
+        hero(version, github_url, release_url) +
+        badges_section() +
+        problem_section() +
+        features_section() +
+        types_section() +
+        quickstart_section() +
+        stats_section() +
+        metrics_section() +
+        footer_section(github_url, release_url, version) +
+        "</body></html>"
+}
+
+fn hero(version, github_url, release_url) {
+    return "<section class='text-center pt-24 pb-12 px-6'>" +
+        "<h1 class='text-5xl font-bold mb-4'>🚀 <span class='bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent'>Cluster CI Cache</span></h1>" +
+        "<p class='text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed'>Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/BuildKit — native to Kubernetes, boring to operate.</p>" +
+        "<div class='flex flex-wrap gap-3 justify-center mt-8'>" +
+        "<a href='" + release_url + "' class='px-7 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-white font-semibold transition hover:-translate-y-0.5'>⬇ Download v" + version + "</a>" +
+        "<a href='" + github_url + "' class='px-7 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-200 font-semibold transition hover:-translate-y-0.5'>📖 GitHub</a>" +
+        "</div></section>"
+}
+
+fn badges_section() {
+    return "<section class='flex flex-wrap gap-2 justify-center px-6 pb-8'>" +
+        badge("bg-green-400", "Rust 1.95") +
+        badge("bg-blue-400", "K8s 1.30+") +
+        badge("bg-green-400", "101 MB image") +
+        badge("bg-blue-400", "13 tests") +
+        badge("bg-green-400", "2 replicas") +
+        badge("bg-orange-400", "6 agents") +
+        badge("bg-purple-400", "7 nodes") +
+        badge("bg-green-400", "E2E verified") +
+        badge("bg-orange-400", "zstd") +
+        "</section>"
+}
+
+fn problem_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-5xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>The Problem It Solves</h2>" +
+        "<div class='grid md:grid-cols-2 gap-6'>" +
+        card("❌", "Without Cache", "CI starts cold, downloads every crate, compiles from scratch. 5 minutes wasted per build, repeated 100x/day.") +
+        card("✅", "With Cluster CI Cache", "In-cluster restore in under 1 second. Warm incremental builds. 20 seconds total. Dedup keeps storage flat.") +
+        "</div></div></section>"
+}
+
+fn features_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-5xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>Key Features</h2>" +
+        "<div class='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>" +
+        card("🔒", "Security-First", "Custom archive format with path traversal protection, decompression bomb prevention, sha256 digest verification.") +
+        card("📦", "Content-Addressed", "Blobs stored by sha256 digest. Dedup across keys, namespaces, types. Store once, reference everywhere.") +
+        card("☸️", "K8s-Native", "Deployment + DaemonSet + RBAC. Health probes, Prometheus metrics, Helm chart included.") +
+        card("🔌", "Backend-Agnostic", "Filesystem/PVC for dev, S3/MinIO for production. Same API regardless of backend.") +
+        card("⚡", "Fast Restores", "zstd compression, dedup skips, in-cluster network. Restore under 1 second for typical cache.") +
+        card("📊", "Observable", "Prometheus metrics: hits, misses, bytes, dedup hits, latency histograms. Structured JSON logs.") +
+        "</div></div></section>"
+}
+fn types_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-5xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>Cache Types</h2>" +
+        "<div class='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>" +
+        card("🦀", "Rust / Cargo", "~/.cargo/registry, ~/.cargo/git, optional target/. Keyed on Cargo.lock hash.") +
+        card("📦", "npm", "~/.npm cache. Keyed on package-lock.json hash.") +
+        card("📦", "pnpm", "pnpm content-addressable store. Keyed on pnpm-lock.yaml hash.") +
+        card("🧶", "yarn", "yarn cache directory. Keyed on yarn.lock hash.") +
+        card("🐳", "Docker / BuildKit", "BuildKit registry-type cache. CLI helpers generate --cache-from/--cache-to flags.") +
+        card("📁", "Generic", "Any arbitrary directory. Custom toolchains, LLVM artifacts, etc.") +
+        "</div></div></section>"
+}
+
+fn quickstart_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-3xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>Quick Start</h2>" +
+        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden mb-4'><pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
+        cmt("&gt; Deploy to Kubernetes") + "\n" +
+        "kubectl apply -k deploy/k8s/\n\n" +
+        cmt("&gt; Restore Cargo cache") + "\n" +
+        "ci-cache restore --cache-type cargo \\\n" +
+        "  --key cargo-$LOCK_HASH \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n\n" +
+        "cargo build --release\n\n" +
+        cmt("&gt; Save cache") + "\n" +
+        "ci-cache save --cache-type cargo \\\n" +
+        "  --key cargo-$LOCK_HASH \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n" +
+        "</pre></div>" +
+        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden'><pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
+        cmt("&gt; Docker image") + "\n" +
+        "docker pull registry.quantum-forge.net/cluster-ci-cache/ci-cache:v0.1.0\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn stats_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-4xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>Live Stats</h2>" +
+        "<div class='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4'>" +
+        stat("6", "Crates") +
+        stat("3,424", "LOC") +
+        stat("13", "Tests") +
+        stat("101 MB", "Image") +
+        stat("2+6", "Pods") +
+        stat("0.8s", "Restore") +
+        "</div></div></section>"
+}
+
+fn metrics_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-3xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>Prometheus Metrics</h2>" +
+        "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden'><pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>" +
+        "ci_cache_hits_total 1\n" +
+        "ci_cache_misses_total 1\n" +
+        "ci_cache_bytes_uploaded_total 249\n" +
+        "ci_cache_bytes_downloaded_total 498\n" +
+        "ci_cache_blob_dedup_hits_total 1\n" +
+        "ci_cache_restore_duration_seconds_bucket{le=\"0.5\"} 2\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn footer_section(github_url, release_url, version) {
+    return "<footer class='border-t border-white/5 py-12 px-6 text-center text-slate-500'>" +
+        "<p><a href='" + github_url + "' class='text-blue-400 hover:text-blue-300'>GitHub</a> · " +
+        "<a href='" + release_url + "' class='text-blue-400 hover:text-blue-300'>Releases</a> · v" + version + "</p>" +
+        "<p class='mt-3 text-sm'>Built with Rust · Designed for Kubernetes · Made for CI</p>" +
+        "</footer>"
+}
+
+fn static_file(req) {
+    let path = req.path
+    if path.contains("..") { return text_resp(403, "forbidden\n") }
+    let file = "." + path
+    let body = fs.read(file)
+    if body.is_err() { return text_resp(404, "not found\n") }
+    return response(200, body.unwrap(), content_type(file))
+}
+
+fn handle(req) {
+    let route = req.path
+    if route.starts_with("/static/") { return static_file(req) }
+    if req.method == "GET" && route == "/" {
+        return html_resp(200, page("0.1.0",
+            "https://github.com/rileyseaburg/cluster-ci-cache",
+            "https://github.com/rileyseaburg/cluster-ci-cache/releases/tag/v0.1.0"))
+    }
+    if route == "/robots.txt" { return text_resp(200, "User-agent: *\nAllow: /\n") }
+    if route == "/favicon.ico" { return text_resp(404, "") }
+    return html_resp(404, "<h1>404</h1><p>Not found</p>")
+}
+
+fn main() {
+    println("Starting Cluster CI Cache website on http://0.0.0.0:8787/")
+    http_serve(8787, handle)
+}

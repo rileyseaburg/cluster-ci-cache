@@ -1,0 +1,210 @@
+// cluster_ci_cache_website.tether
+// Generates the Cluster CI Cache landing page HTML from project metadata.
+// Usage: invoke generate(meta) where meta is a JSON object.
+
+fn generate(meta) {
+    let version = meta.version
+    let rust_version = meta.rust_version
+    let image_size = meta.image_size
+    let tests = meta.tests
+    let server_replicas = meta.server_replicas
+    let agent_pods = meta.agent_pods
+    let cluster_nodes = meta.cluster_nodes
+    let docker_image = meta.docker_image
+    let registry = meta.registry
+    let github_url = meta.github_url
+    let release_url = meta.release_url
+
+    let html = head(version) +
+        hero(version, github_url, release_url) +
+        badges_row(image_size, tests, server_replicas, agent_pods, cluster_nodes) +
+        problem_section() +
+        features_grid() +
+        cache_types_section() +
+        quick_start(docker_image, registry) +
+        metrics_section() +
+        footer(github_url, release_url, version)
+
+    return Ok(html)
+}
+
+fn head(version) {
+    return "<!DOCTYPE html><html lang=\"en\"><head>" +
+        "<meta charset=\"UTF-8\">" +
+        "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" +
+        "<title>Cluster CI Cache — In-Cluster Build Cache for Kubernetes v" + version + "</title>" +
+        "<meta name=\"description\" content=\"Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/BuildKit — native to Kubernetes.\">" +
+        css() +
+        "</head><body>"
+}
+// styles.tether — CSS generation for the landing page
+
+fn css() {
+    return "<style>" +
+        ":root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#e6edf3;" +
+        "--muted:#8b949e;--accent:#dea584;--blue:#58a6ff;--green:#3fb950;" +
+        "--orange:#f78166;--purple:#bc8cff;--radius:12px;--max:960px}" +
+        "*{margin:0;padding:0;box-sizing:border-box}" +
+        "body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;" +
+        "background:var(--bg);color:var(--text);line-height:1.6}" +
+        "a{color:var(--blue);text-decoration:none}" +
+        ".wrap{max-width:var(--max);margin:0 auto;padding:0 24px}" +
+        ".hero{text-align:center;padding:80px 24px 40px}" +
+        ".hero h1{font-size:3em;margin-bottom:12px}" +
+        ".gradient{background:linear-gradient(135deg,#dea584,#f78166,#bc8cff);" +
+        "-webkit-background-clip:text;-webkit-text-fill-color:transparent}" +
+        ".hero p{font-size:1.25em;color:var(--muted);max-width:600px;margin:0 auto}" +
+        ".cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}" +
+        ".btn{display:inline-block;padding:12px 28px;border-radius:var(--radius);" +
+        "font-weight:600;font-size:1.05em;transition:transform .2s}" +
+        ".btn:hover{transform:translateY(-2px)}" +
+        ".btn-primary{background:var(--green);color:#fff}" +
+        ".btn-secondary{background:var(--surface);color:var(--text);border:1px solid var(--border)}" +
+        ".badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:20px 0}" +
+        ".badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;" +
+        "font-size:.85em;font-weight:600;background:var(--surface);border:1px solid var(--border)}" +
+        ".dot{width:8px;height:8px;border-radius:50%;display:inline-block}" +
+        ".dot-green{background:var(--green)}.dot-blue{background:var(--blue)}" +
+        ".dot-orange{background:var(--orange)}.dot-purple{background:var(--purple)}" +
+        "section{padding:60px 0;border-top:1px solid var(--border)}" +
+        "section h2{font-size:1.8em;margin-bottom:24px;text-align:center}" +
+        ".grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:32px 0}" +
+        ".card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px}" +
+        ".card .icon{font-size:2em;margin-bottom:12px}" +
+        ".card h3{font-size:1.15em;margin-bottom:8px}" +
+        ".card p{color:var(--muted);font-size:.95em}" +
+        ".codeblock{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);" +
+        "overflow:hidden;margin:16px 0}" +
+        ".codeblock pre{padding:16px;overflow-x:auto;font-family:monospace;font-size:.9em;line-height:1.5}" +
+        ".stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px}" +
+        ".stat{text-align:center;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius)}" +
+        ".stat .num{font-size:2em;font-weight:800;color:var(--accent)}" +
+        ".stat .label{color:var(--muted);font-size:.85em;margin-top:4px}" +
+        "footer{text-align:center;padding:40px 24px;border-top:1px solid var(--border);color:var(--muted)}" +
+        "@media(max-width:600px){.hero h1{font-size:2em}.hero p{font-size:1em}}" +
+        "</style>"
+}
+// sections_hero.tether — hero and badge row
+
+fn hero(version, github_url, release_url) {
+    return "<div class=\"hero\">" +
+        "<h1>🚀 <span class=\"gradient\">Cluster CI Cache</span></h1>" +
+        "<p>Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, " +
+        "and Docker/BuildKit — native to Kubernetes, boring to operate.</p>" +
+        "<div class=\"cta\">" +
+        "<a class=\"btn btn-primary\" href=\"" + release_url + "\">⬇ Download v" + version + "</a>" +
+        "<a class=\"btn btn-secondary\" href=\"" + github_url + "\">📖 View on GitHub</a>" +
+        "</div></div>"
+}
+
+fn badges_row(image_size, tests, server_replicas, agent_pods, cluster_nodes) {
+    return "<div class=\"badges wrap\">" +
+        badge("dot-green", "Rust 1.95") +
+        badge("dot-blue", "K8s 1.30+") +
+        badge("dot-green", image_size + " image") +
+        badge("dot-blue", tests + " tests") +
+        badge("dot-green", server_replicas + " replicas") +
+        badge("dot-orange", agent_pods + " agents") +
+        badge("dot-purple", cluster_nodes + " nodes") +
+        badge("dot-green", "E2E verified") +
+        badge("dot-orange", "zstd") +
+        "</div>"
+}
+
+fn badge(dot_class, text) {
+    return "<span class=\"badge\"><span class=\"dot " + dot_class + "\"></span>" + text + "</span>"
+}
+// sections_content.tether — problem, features, cache types, quickstart, metrics, footer
+
+fn problem_section() {
+    return "<section><div class=\"wrap\"><h2>The Problem It Solves</h2>" +
+        "<div class=\"grid\">" +
+        card("❌", "Without Cache", "CI starts cold, downloads every crate, compiles from scratch. 5 minutes wasted per build, repeated 100x/day.") +
+        card("✅", "With Cluster CI Cache", "In-cluster restore in under 1 second. Warm incremental builds. 20 seconds total. Deduplication keeps storage flat.") +
+        "</div></div></section>"
+}
+
+fn features_grid() {
+    return "<section><div class=\"wrap\"><h2>Key Features</h2>" +
+        "<div class=\"grid\">" +
+        card("🔒", "Security-First", "Custom archive format with path traversal protection, decompression bomb prevention, and sha256 digest verification.") +
+        card("📦", "Content-Addressed", "Blobs stored by sha256 digest. Deduplication across cache keys, namespaces, and cache types. Store once, reference everywhere.") +
+        card("☸️", "K8s-Native", "Deployment + DaemonSet + Service + RBAC. Health probes, Prometheus metrics, structured JSON logs. Helm chart included.") +
+        card("🔌", "Backend-Agnostic", "Filesystem/PVC for local dev, S3/MinIO for production. Same API regardless of backend.") +
+        card("⚡", "Fast Restores", "zstd compression, dedup skips, in-cluster network. Typical restore under 1 second for 50MB cache.") +
+        card("📊", "Observable", "Full Prometheus metrics: hits, misses, bytes uploaded/downloaded, dedup hits, latency histograms.") +
+        "</div></div></section>"
+}
+
+fn cache_types_section() {
+    return "<section><div class=\"wrap\"><h2>Supported Cache Types</h2>" +
+        "<div class=\"grid\">" +
+        card("🦀", "Rust / Cargo", "~/.cargo/registry, ~/.cargo/git, optional target/. Keyed on Cargo.lock hash.") +
+        card("📦", "npm", "~/.npm cache. Keyed on package-lock.json hash.") +
+        card("📦", "pnpm", "pnpm content-addressable store. Keyed on pnpm-lock.yaml hash.") +
+        card("🧶", "yarn", "yarn cache directory. Keyed on yarn.lock hash.") +
+        card("🐳", "Docker / BuildKit", "BuildKit registry-type cache. CLI helpers generate --cache-from/--cache-to flags.") +
+        card("📁", "Generic", "Any arbitrary directory. Use for custom toolchains, LLVM artifacts, etc.") +
+        "</div></div></section>"
+}
+
+fn quick_start(docker_image, registry) {
+    return "<section><div class=\"wrap\"><h2>Quick Start</h2>" +
+        "<div class=\"codeblock\"><pre>" +
+        "<span style=\"color:#8b949e\"># Deploy to Kubernetes</span>\n" +
+        "kubectl apply -k deploy/k8s/\n\n" +
+        "<span style=\"color:#8b949e\"># Restore Cargo cache</span>\n" +
+        "ci-cache restore --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n\n" +
+        "cargo build --release\n\n" +
+        "<span style=\"color:#8b949e\"># Save cache</span>\n" +
+        "ci-cache save --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n" +
+        "</pre></div>" +
+        "<div class=\"codeblock\"><pre>" +
+        "<span style=\"color:#8b949e\"># Docker image</span>\n" +
+        "docker pull " + docker_image + "\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn metrics_section() {
+    return "<section><div class=\"wrap\"><h2>Live Stats</h2>" +
+        "<div class=\"stats\">" +
+        stat("6", "Rust crates") +
+        stat("3,424", "Lines of code") +
+        stat("13", "Tests passing") +
+        stat("101 MB", "Image size") +
+        stat("7", "Layers") +
+        stat("2x + 6x", "Pods running") +
+        "</div>" +
+        "<div class=\"codeblock\"><pre>" +
+        "<span style=\"color:#8b949e\"># Prometheus metrics</span>\n" +
+        "ci_cache_hits_total 1\n" +
+        "ci_cache_misses_total 1\n" +
+        "ci_cache_bytes_uploaded_total 249\n" +
+        "ci_cache_restore_duration_seconds_bucket{le=\"0.1\"} 2\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn footer(github_url, release_url, version) {
+    return "<footer><div class=\"wrap\">" +
+        "<p><a href=\"" + github_url + "\">GitHub Repository</a> · " +
+        "<a href=\"" + release_url + "\">Releases</a> · " +
+        "v" + version + "</p>" +
+        "<p style=\"margin-top:12px\">Built with ❤️ in Rust · Designed for Kubernetes · Made for CI</p>" +
+        "</div></footer></body></html>"
+}
+
+fn card(icon, title, desc) {
+    return "<div class=\"card\"><div class=\"icon\">" + icon + "</div>" +
+        "<h3>" + title + "</h3><p>" + desc + "</p></div>"
+}
+
+fn stat(num, label) {
+    return "<div class=\"stat\"><div class=\"num\">" + num + "</div>" +
+        "<div class=\"label\">" + label + "</div></div>"
+}

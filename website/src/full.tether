@@ -1,0 +1,183 @@
+fn generate(version, github_url, release_url, docker_image,
+            image_size, tests, server_replicas, agent_pods, cluster_nodes) {
+
+    let html = head(version) +
+        hero(version, github_url, release_url) +
+        badges(image_size, tests, server_replicas, agent_pods, cluster_nodes) +
+        problem() +
+        features() +
+        types() +
+        quickstart(docker_image) +
+        metrics() +
+        footer(github_url, release_url, version)
+
+    return Ok(html)
+}
+
+fn head(version) {
+    return "<!DOCTYPE html><html lang='en'><head>" +
+        "<meta charset='UTF-8'>" +
+        "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+        "<title>Cluster CI Cache v" + version + "</title>" +
+        styles() +
+        "</head><body>"
+}
+fn styles() {
+    return "<style>" +
+        ":root{--bg:rgb(13,17,23);--sf:rgb(22,27,34);--bd:rgb(48,54,61);--tx:rgb(230,237,243);" +
+        "--mt:rgb(139,148,158);--ac:rgb(222,165,132);--bl:rgb(88,166,255);--gr:rgb(63,185,80);" +
+        "--or:rgb(247,129,102);--pu:rgb(188,140,255);--r:12px;--mw:960px}" +
+        "*{margin:0;padding:0;box-sizing:border-box}" +
+        "body{font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6}" +
+        "a{color:var(--bl);text-decoration:none}" +
+        ".w{max-width:var(--mw);margin:0 auto;padding:0 24px}" +
+        ".hero{text-align:center;padding:80px 24px 40px}" +
+        ".hero h1{font-size:3em;margin-bottom:12px}" +
+        ".grd{background:linear-gradient(135deg,rgb(222,165,132),rgb(247,129,102),rgb(188,140,255));" +
+        "-webkit-background-clip:text;-webkit-text-fill-color:transparent}" +
+        ".hero p{font-size:1.2em;color:var(--mt);max-width:600px;margin:0 auto}" +
+        ".cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}" +
+        ".btn{display:inline-block;padding:12px 28px;border-radius:var(--r);font-weight:600;transition:transform .2s}" +
+        ".btn:hover{transform:translateY(-2px)}" +
+        ".bp{background:var(--gr);color:rgb(255,255,255)}" +
+        ".bs{background:var(--sf);color:var(--tx);border:1px solid var(--bd)}" +
+        ".bdg{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:20px 0}" +
+        ".b{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;" +
+        "font-size:.85em;font-weight:600;background:var(--sf);border:1px solid var(--bd)}" +
+        ".d{width:8px;height:8px;border-radius:50%}" +
+        ".dg{background:var(--gr)}.db{background:var(--bl)}.do{background:var(--or)}.dp{background:var(--pu)}" +
+        "section{padding:60px 0;border-top:1px solid var(--bd)}" +
+        "section h2{font-size:1.8em;margin-bottom:24px;text-align:center}" +
+        ".grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}" +
+        ".card{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);padding:28px}" +
+        ".card .ic{font-size:2em;margin-bottom:12px}" +
+        ".card h3{font-size:1.1em;margin-bottom:8px}" +
+        ".card p{color:var(--mt);font-size:.92em}" +
+        ".code{background:var(--sf);border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;margin:16px 0}" +
+        ".code pre{padding:16px;overflow-x:auto;font-family:monospace;font-size:.88em;line-height:1.5}" +
+        ".cmt{color:var(--mt)}" +
+        ".stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px}" +
+        ".stat{text-align:center;padding:20px;background:var(--sf);border:1px solid var(--bd);border-radius:var(--r)}" +
+        ".stat .n{font-size:1.8em;font-weight:800;color:var(--ac)}" +
+        ".stat .l{color:var(--mt);font-size:.82em;margin-top:4px}" +
+        "footer{text-align:center;padding:40px 24px;border-top:1px solid var(--bd);color:var(--mt)}" +
+        "@media(max-width:600px){.hero h1{font-size:2em}.hero p{font-size:1em}}" +
+        "</style>"
+}
+fn hero(version, github_url, release_url) {
+    return "<div class='hero'>" +
+        "<h1>🚀 <span class='grd'>Cluster CI Cache</span></h1>" +
+        "<p>Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, " +
+        "and Docker/BuildKit — native to Kubernetes, boring to operate.</p>" +
+        "<div class='cta'>" +
+        "<a class='btn bp' href='" + release_url + "'>⬇ Download v" + version + "</a>" +
+        "<a class='btn bs' href='" + github_url + "'>📖 GitHub</a>" +
+        "</div></div>"
+}
+
+fn badge(dot, text) {
+    return "<span class='b'><span class='d " + dot + "'></span>" + text + "</span>"
+}
+
+fn badges(sz, tests, srv, agt, nodes) {
+    return "<div class='bdg w'>" +
+        badge("dg", "Rust 1.95") +
+        badge("db", "K8s 1.30+") +
+        badge("dg", sz + " image") +
+        badge("db", tests + " tests") +
+        badge("dg", srv + " replicas") +
+        badge("do", agt + " agents") +
+        badge("dp", nodes + " nodes") +
+        badge("dg", "E2E verified") +
+        badge("do", "zstd") +
+        "</div>"
+}
+
+fn card(ic, title, desc) {
+    return "<div class='card'><div class='ic'>" + ic + "</div>" +
+        "<h3>" + title + "</h3><p>" + desc + "</p></div>"
+}
+
+fn problem() {
+    return "<section><div class='w'><h2>The Problem It Solves</h2>" +
+        "<div class='grid'>" +
+        card("❌", "Without Cache", "CI starts cold, downloads every crate, compiles from scratch. 5 minutes per build wasted.") +
+        card("✅", "With Cluster CI Cache", "In-cluster restore in under 1 second. Warm builds. 20 seconds total. Dedup keeps storage flat.") +
+        "</div></div></section>"
+}
+
+fn features() {
+    return "<section><div class='w'><h2>Key Features</h2><div class='grid'>" +
+        card("🔒", "Security-First", "Custom archive format. Path traversal protection, decompression bomb prevention, sha256 digest verification.") +
+        card("📦", "Content-Addressed", "Blobs stored by sha256. Dedup across keys, namespaces, types. Store once, reference everywhere.") +
+        card("☸️", "K8s-Native", "Deployment + DaemonSet + RBAC. Health probes, Prometheus metrics, Helm chart included.") +
+        card("🔌", "Backend-Agnostic", "Filesystem/PVC for dev, S3/MinIO for production. Same API regardless of backend.") +
+        card("⚡", "Fast Restores", "zstd compression, dedup skips, in-cluster network. Restore under 1 second for typical cache.") +
+        card("📊", "Observable", "Prometheus metrics: hits, misses, bytes, dedup hits, latency histograms.") +
+        "</div></div></section>"
+}
+
+fn types() {
+    return "<section><div class='w'><h2>Cache Types</h2><div class='grid'>" +
+        card("🦀", "Rust / Cargo", "~/.cargo/registry, ~/.cargo/git, optional target/. Keyed on Cargo.lock hash.") +
+        card("📦", "npm", "~/.npm cache. Keyed on package-lock.json hash.") +
+        card("📦", "pnpm", "pnpm store. Keyed on pnpm-lock.yaml hash.") +
+        card("🧶", "yarn", "yarn cache dir. Keyed on yarn.lock hash.") +
+        card("🐳", "Docker / BuildKit", "BuildKit registry cache. CLI helpers generate --cache-from/--cache-to flags.") +
+        card("📁", "Generic", "Any directory. Custom toolchains, LLVM artifacts, etc.") +
+        "</div></div></section>"
+}
+fn quickstart(docker_image) {
+    return "<section><div class='w'><h2>Quick Start</h2>" +
+        "<div class='code'><pre>" +
+        "<span class='cmt'>&gt; Deploy to Kubernetes</span>\n" +
+        "kubectl apply -k deploy/k8s/\n\n" +
+        "<span class='cmt'>&gt; Restore Cargo cache</span>\n" +
+        "ci-cache restore --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n\n" +
+        "cargo build --release\n\n" +
+        "<span class='cmt'>&gt; Save cache</span>\n" +
+        "ci-cache save --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n" +
+        "</pre></div>" +
+        "<div class='code'><pre>" +
+        "<span class='cmt'>&gt; Docker image</span>\n" +
+        "docker pull " + docker_image + "\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn stat(n, l) {
+    return "<div class='stat'><div class='n'>" + n + "</div>" +
+        "<div class='l'>" + l + "</div></div>"
+}
+
+fn metrics() {
+    return "<section><div class='w'><h2>Live Stats</h2>" +
+        "<div class='stats'>" +
+        stat("6", "Rust crates") +
+        stat("3,424", "Lines of code") +
+        stat("13", "Tests passing") +
+        stat("101 MB", "Image size") +
+        stat("2x+6x", "Pods running") +
+        stat("0.8s", "Avg restore") +
+        "</div>" +
+        "<div class='code'><pre>" +
+        "<span class='cmt'>&gt; Prometheus metrics</span>\n" +
+        "ci_cache_hits_total 1\n" +
+        "ci_cache_misses_total 1\n" +
+        "ci_cache_bytes_uploaded_total 249\n" +
+        "ci_cache_bytes_downloaded_total 498\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn footer(github_url, release_url, version) {
+    return "<footer><div class='w'>" +
+        "<p><a href='" + github_url + "'>GitHub</a> &middot; " +
+        "<a href='" + release_url + "'>Releases</a> &middot; v" + version + "</p>" +
+        "<p style='margin-top:12px'>Built with Rust &middot; Designed for Kubernetes &middot; Made for CI</p>" +
+        "</div></footer></body></html>"
+}

@@ -1,0 +1,58 @@
+// Cluster CI Cache website — TetherScript HTTP server.
+// Run: tetherscript run --grant-fs . server.tether
+
+fn content_type(path) {
+    if path.ends_with(".html") { return "text/html; charset=utf-8" }
+    if path.ends_with(".css") { return "text/css; charset=utf-8" }
+    if path.ends_with(".js") { return "application/javascript; charset=utf-8" }
+    if path.ends_with(".json") { return "application/json" }
+    if path.ends_with(".txt") { return "text/plain; charset=utf-8" }
+    if path.ends_with(".svg") { return "image/svg+xml" }
+    if path.ends_with(".ico") { return "image/x-icon" }
+    if path.ends_with(".png") { return "image/png" }
+    return "application/octet-stream"
+}
+
+fn response(status, body, content_type_value) {
+    let resp = map()
+    resp.status = status
+    resp.body = body
+    let headers = map()
+    headers["content-type"] = content_type_value
+    resp.headers = headers
+    return resp
+}
+
+fn html_resp(status, body) { return response(status, body, "text/html; charset=utf-8") }
+fn text_resp(status, body) { return response(status, body, "text/plain; charset=utf-8") }
+
+fn card(icon, title, desc) {
+    return "<div class='rounded-xl border border-white/10 bg-white/5 p-6 transition hover:border-white/20 hover:bg-white/10'>" +
+        "<div class='text-3xl mb-3'>" + icon + "</div>" +
+        "<h3 class='text-base font-semibold text-white mb-2'>" + title + "</h3>" +
+        "<p class='text-sm text-slate-400 leading-relaxed'>" + desc + "</p></div>"
+}
+
+fn stat(num, label) {
+    return "<div class='rounded-xl border border-white/10 bg-white/5 p-5 text-center'>" +
+        "<div class='text-2xl font-extrabold bg-gradient-to-r from-orange-400 to-purple-400 bg-clip-text text-transparent'>" + num + "</div>" +
+        "<div class='mt-1 text-xs text-slate-500 uppercase tracking-wider'>" + label + "</div></div>"
+}
+
+fn badge(dot, text) {
+    return "<span class='inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300'>" +
+        "<span class='h-2 w-2 rounded-full " + dot + "'></span>" + text + "</span>"
+}
+
+fn code_block(lines) {
+    let mut html = "<div class='rounded-xl border border-white/10 bg-black/40 overflow-hidden my-4'><pre class='p-4 overflow-x-auto text-sm text-slate-300 font-mono leading-relaxed'>"
+    for line in lines {
+        html = html + line + "\n"
+    }
+    html = html + "</pre></div>"
+    return html
+}
+
+fn cmt(text) {
+    return "<span class='text-slate-500'>" + text + "</span>"
+}

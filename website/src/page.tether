@@ -1,0 +1,68 @@
+fn page(version, github_url, release_url) {
+    return "<!doctype html><html lang='en' class='scroll-smooth'>" +
+        "<head>" +
+        "<meta charset='UTF-8'>" +
+        "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" +
+        "<title>Cluster CI Cache — In-Cluster Build Cache for Kubernetes</title>" +
+        "<meta name='description' content='Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/BuildKit — native to Kubernetes.'>" +
+        "<script src='https://cdn.tailwindcss.com'></script>" +
+        "<style>body{background:radial-gradient(circle at 20% 0%,rgba(222,165,132,.12),transparent 32rem),radial-gradient(circle at 85% 15%,rgba(188,140,255,.10),transparent 28rem),#0d1117}</style>" +
+        "</head>" +
+        "<body class='min-h-screen text-slate-100 antialiased'>" +
+        hero(version, github_url, release_url) +
+        badges_section() +
+        problem_section() +
+        features_section() +
+        types_section() +
+        quickstart_section() +
+        stats_section() +
+        metrics_section() +
+        footer_section(github_url, release_url, version) +
+        "</body></html>"
+}
+
+fn hero(version, github_url, release_url) {
+    return "<section class='text-center pt-24 pb-12 px-6'>" +
+        "<h1 class='text-5xl font-bold mb-4'>🚀 <span class='bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 bg-clip-text text-transparent'>Cluster CI Cache</span></h1>" +
+        "<p class='text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed'>Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/BuildKit — native to Kubernetes, boring to operate.</p>" +
+        "<div class='flex flex-wrap gap-3 justify-center mt-8'>" +
+        "<a href='" + release_url + "' class='px-7 py-3 rounded-xl bg-green-500 hover:bg-green-400 text-white font-semibold transition hover:-translate-y-0.5'>⬇ Download v" + version + "</a>" +
+        "<a href='" + github_url + "' class='px-7 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-slate-200 font-semibold transition hover:-translate-y-0.5'>📖 GitHub</a>" +
+        "</div></section>"
+}
+
+fn badges_section() {
+    return "<section class='flex flex-wrap gap-2 justify-center px-6 pb-8'>" +
+        badge("bg-green-400", "Rust 1.95") +
+        badge("bg-blue-400", "K8s 1.30+") +
+        badge("bg-green-400", "101 MB image") +
+        badge("bg-blue-400", "13 tests") +
+        badge("bg-green-400", "2 replicas") +
+        badge("bg-orange-400", "6 agents") +
+        badge("bg-purple-400", "7 nodes") +
+        badge("bg-green-400", "E2E verified") +
+        badge("bg-orange-400", "zstd") +
+        "</section>"
+}
+
+fn problem_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-5xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>The Problem It Solves</h2>" +
+        "<div class='grid md:grid-cols-2 gap-6'>" +
+        card("❌", "Without Cache", "CI starts cold, downloads every crate, compiles from scratch. 5 minutes wasted per build, repeated 100x/day.") +
+        card("✅", "With Cluster CI Cache", "In-cluster restore in under 1 second. Warm incremental builds. 20 seconds total. Dedup keeps storage flat.") +
+        "</div></div></section>"
+}
+
+fn features_section() {
+    return "<section class='py-16 px-6 border-t border-white/5'><div class='max-w-5xl mx-auto'>" +
+        "<h2 class='text-3xl font-bold text-center mb-8'>Key Features</h2>" +
+        "<div class='grid md:grid-cols-2 lg:grid-cols-3 gap-6'>" +
+        card("🔒", "Security-First", "Custom archive format with path traversal protection, decompression bomb prevention, sha256 digest verification.") +
+        card("📦", "Content-Addressed", "Blobs stored by sha256 digest. Dedup across keys, namespaces, types. Store once, reference everywhere.") +
+        card("☸️", "K8s-Native", "Deployment + DaemonSet + RBAC. Health probes, Prometheus metrics, Helm chart included.") +
+        card("🔌", "Backend-Agnostic", "Filesystem/PVC for dev, S3/MinIO for production. Same API regardless of backend.") +
+        card("⚡", "Fast Restores", "zstd compression, dedup skips, in-cluster network. Restore under 1 second for typical cache.") +
+        card("📊", "Observable", "Prometheus metrics: hits, misses, bytes, dedup hits, latency histograms. Structured JSON logs.") +
+        "</div></div></section>"
+}

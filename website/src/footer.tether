@@ -1,0 +1,54 @@
+fn quickstart(docker_image) {
+    return "<section><div class='w'><h2>Quick Start</h2>" +
+        "<div class='code'><pre>" +
+        "<span class='cmt'>&gt; Deploy to Kubernetes</span>\n" +
+        "kubectl apply -k deploy/k8s/\n\n" +
+        "<span class='cmt'>&gt; Restore Cargo cache</span>\n" +
+        "ci-cache restore --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n\n" +
+        "cargo build --release\n\n" +
+        "<span class='cmt'>&gt; Save cache</span>\n" +
+        "ci-cache save --cache-type cargo \\\n" +
+        "  --key cargo-${LOCK_HASH} \\\n" +
+        "  --paths ~/.cargo/registry,~/.cargo/git,target\n" +
+        "</pre></div>" +
+        "<div class='code'><pre>" +
+        "<span class='cmt'>&gt; Docker image</span>\n" +
+        "docker pull " + docker_image + "\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn stat(n, l) {
+    return "<div class='stat'><div class='n'>" + n + "</div>" +
+        "<div class='l'>" + l + "</div></div>"
+}
+
+fn metrics() {
+    return "<section><div class='w'><h2>Live Stats</h2>" +
+        "<div class='stats'>" +
+        stat("6", "Rust crates") +
+        stat("3,424", "Lines of code") +
+        stat("13", "Tests passing") +
+        stat("101 MB", "Image size") +
+        stat("2x+6x", "Pods running") +
+        stat("0.8s", "Avg restore") +
+        "</div>" +
+        "<div class='code'><pre>" +
+        "<span class='cmt'>&gt; Prometheus metrics</span>\n" +
+        "ci_cache_hits_total 1\n" +
+        "ci_cache_misses_total 1\n" +
+        "ci_cache_bytes_uploaded_total 249\n" +
+        "ci_cache_bytes_downloaded_total 498\n" +
+        "</pre></div>" +
+        "</div></section>"
+}
+
+fn footer(github_url, release_url, version) {
+    return "<footer><div class='w'>" +
+        "<p><a href='" + github_url + "'>GitHub</a> &middot; " +
+        "<a href='" + release_url + "'>Releases</a> &middot; v" + version + "</p>" +
+        "<p style='margin-top:12px'>Built with Rust &middot; Designed for Kubernetes &middot; Made for CI</p>" +
+        "</div></footer></body></html>"
+}
