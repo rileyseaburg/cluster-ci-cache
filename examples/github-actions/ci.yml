@@ -1,0 +1,85 @@
+# GitHub Actions: Cluster CI Cache for Cargo/Rust and npm
+#
+# This workflow demonstrates how to use ci-cache in a GitHub Actions runner
+# that has access to a Kubernetes cluster running ci-cache-server.
+#
+# In practice, the runner pod would have CI_CACHE_SERVER pointing to the
+# in-cluster service. For GitHub-hosted runners, use a NodePort/LoadBalancer
+# or a sidecar approach.
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build-rust:
+    runs-on: ubuntu-latest
+    env:
+      CI_CACHE_SERVER: ${{ secrets.CI_CACHE_SERVER_URL }}
+      CI_CACHE_NAMESPACE: ${{ github.repository }}
+      CI_CACHE_TOKEN: ${{ secrets.CI_CACHE_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute Cargo.lock hash
+        id: lockhash
+        run: echo "hash=$(sha256sum Cargo.lock | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+
+      - name: Download ci-cache CLI
+        run: |
+          curl -sSL https://github.com/spotlessbinco/cluster-ci-cache/releases/latest/download/ci-cache-linux-amd64 -o /usr/local/bin/ci-cache
+          chmod +x /usr/local/bin/ci-cache
+
+      - name: Restore Cargo cache
+        run: |
+          ci-cache restore \
+            --cache-type cargo \
+            --key "cargo-linux-amd64-${{ steps.lockhash.outputs.hash }}" \
+            --paths "$HOME/.cargo/registry,$HOME/.cargo/git,target"
+
+      - name: Build
+        run: cargo build --release
+
+      - name: Save Cargo cache
+        run: |
+          ci-cache save \
+            --cache-type cargo \
+            --key "cargo-linux-amd64-${{ steps.lockhash.outputs.hash }}" \
+            --paths "$HOME/.cargo/registry,$HOME/.cargo/git,target"
+
+  build-npm:
+    runs-on: ubuntu-latest
+    env:
+      CI_CACHE_SERVER: ${{ secrets.CI_CACHE_SERVER_URL }}
+      CI_CACHE_NAMESPACE: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute package-lock.json hash
+        id: lockhash
+        run: echo "hash=$(sha256sum package-lock.json | cut -d' ' -f1)" >> $GITHUB_OUTPUT
+
+      - name: Download ci-cache CLI
+        run: |
+          curl -sSL https://github.com/spotlessbinco/cluster-ci-cache/releases/latest/download/ci-cache-linux-amd64 -o /usr/local/bin/ci-cache
+          chmod +x /usr/local/bin/ci-cache
+
+      - name: Restore npm cache
+        run: |
+          ci-cache restore \
+            --cache-type npm \
+            --key "npm-linux-amd64-${{ steps.lockhash.outputs.hash }}" \
+            --paths "$HOME/.npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Save npm cache
+        run: |
+          ci-cache save \
+            --cache-type npm \
+            --key "npm-linux-amd64-${{ steps.lockhash.outputs.hash }}" \
+            --paths "$HOME/.npm"

@@ -1,0 +1,74 @@
+---
+# ServiceAccount for ci-cache-server
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ci-cache-server
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+---
+# ServiceAccount for ci-cache-agent
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ci-cache-agent
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+---
+# Role: allows server to manage its own resources
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: ci-cache-server
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps", "secrets"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+---
+# RoleBinding for ci-cache-server
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: ci-cache-server
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ci-cache-server
+subjects:
+  - kind: ServiceAccount
+    name: ci-cache-server
+---
+# ClusterRole: allows agents to discover nodes for locality
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ci-cache-agent
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+---
+# ClusterRoleBinding for ci-cache-agent
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ci-cache-agent
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ci-cache-agent
+subjects:
+  - kind: ServiceAccount
+    name: ci-cache-agent
+    namespace: default

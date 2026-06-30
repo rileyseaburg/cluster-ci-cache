@@ -1,0 +1,65 @@
+# Tekton Task: Cluster CI Cache for Cargo/Rust
+#
+# This Task restores and saves Cargo build cache using ci-cache-server.
+# The Task assumes the ci-cache CLI binary is available in the build image
+# or is installed as an init step.
+
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: ci-cache-cargo
+spec:
+  params:
+    - name: cache-key
+      description: Cache key (e.g. cargo-linux-amd64-<sha256>)
+      type: string
+    - name: namespace
+      description: CI cache namespace
+      default: default
+      type: string
+  workspaces:
+    - name: source
+  steps:
+    - name: restore
+      image: rust:1.95-slim
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: CI_CACHE_SERVER
+          value: "http://ci-cache-server.default.svc.cluster.local:8080"
+        - name: CI_CACHE_NAMESPACE
+          value: $(params.namespace)
+      script: |
+        #!/usr/bin/env bash
+        set -euo pipefail
+        # Download ci-cache CLI
+        curl -sSL https://github.com/spotlessbinco/cluster-ci-cache/releases/latest/download/ci-cache-linux-amd64 -o /usr/local/bin/ci-cache
+        chmod +x /usr/local/bin/ci-cache
+
+        ci-cache restore \
+          --cache-type cargo \
+          --key "$(params.cache-key)" \
+          --paths "$HOME/.cargo/registry,$HOME/.cargo/git,target"
+
+    - name: build
+      image: rust:1.95-slim
+      workingDir: $(workspaces.source.path)
+      script: |
+        #!/usr/bin/env bash
+        set -euo pipefail
+        cargo build --release
+
+    - name: save
+      image: rust:1.95-slim
+      workingDir: $(workspaces.source.path)
+      env:
+        - name: CI_CACHE_SERVER
+          value: "http://ci-cache-server.default.svc.cluster.local:8080"
+        - name: CI_CACHE_NAMESPACE
+          value: $(params.namespace)
+      script: |
+        #!/usr/bin/env bash
+        set -euo pipefail
+        ci-cache save \
+          --cache-type cargo \
+          --key "$(params.cache-key)" \
+          --paths "$HOME/.cargo/registry,$HOME/.cargo/git,target"

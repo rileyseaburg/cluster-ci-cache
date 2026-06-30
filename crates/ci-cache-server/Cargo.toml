@@ -1,0 +1,32 @@
+[package]
+name = "ci-cache-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "In-cluster cache server for Cluster CI Cache"
+
+[[bin]]
+name = "ci-cache-server"
+path = "src/main.rs"
+
+[dependencies]
+ci-cache-core = { workspace = true }
+ci-cache-backend-fs = { workspace = true }
+ci-cache-backend-s3 = { workspace = true }
+tokio = { workspace = true }
+axum = { workspace = true }
+tower = { workspace = true }
+tower-http = { workspace = true }
+hyper = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+serde_yaml = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+prometheus = { workspace = true }
+bytes = { workspace = true }
+futures = { workspace = true }
+chrono = { workspace = true }
+uuid = { workspace = true }
+async-trait = { workspace = true }

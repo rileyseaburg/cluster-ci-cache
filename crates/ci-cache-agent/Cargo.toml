@@ -1,0 +1,21 @@
+[package]
+name = "ci-cache-agent"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Node-local DaemonSet agent for Cluster CI Cache"
+
+[[bin]]
+name = "ci-cache-agent"
+path = "src/main.rs"
+
+[dependencies]
+ci-cache-core = { workspace = true }
+tokio = { workspace = true }
+clap = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+axum = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }

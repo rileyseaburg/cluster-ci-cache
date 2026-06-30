@@ -1,0 +1,64 @@
+# GitLab CI: Cluster CI Cache integration
+#
+# This example shows how to use ci-cache in a GitLab CI pipeline running
+# inside Kubernetes. The runner must have network access to ci-cache-server.
+
+.cci_cache_restore: &cci_cache_restore
+  before_script:
+    - |
+      # Download ci-cache CLI
+      curl -sSL https://github.com/spotlessbinco/cluster-ci-cache/releases/latest/download/ci-cache-linux-amd64 -o /usr/local/bin/ci-cache
+      chmod +x /usr/local/bin/ci-cache
+    - |
+      LOCK_HASH=$(sha256sum Cargo.lock | cut -d' ' -f1)
+      ci-cache restore \
+        --cache-type cargo \
+        --key "cargo-linux-amd64-${LOCK_HASH}" \
+        --paths "$HOME/.cargo/registry,$HOME/.cargo/git,target"
+
+.cci_cache_save: &cci_cache_save
+  after_script:
+    - |
+      LOCK_HASH=$(sha256sum Cargo.lock | cut -d' ' -f1)
+      ci-cache save \
+        --cache-type cargo \
+        --key "cargo-linux-amd64-${LOCK_HASH}" \
+        --paths "$HOME/.cargo/registry,$HOME/.cargo/git,target"
+
+variables:
+  CI_CACHE_SERVER: "http://ci-cache-server.default.svc.cluster.local:8080"
+  CI_CACHE_NAMESPACE: $CI_PROJECT_PATH
+
+build-rust:
+  stage: build
+  image: rust:1.95-slim
+  variables:
+    CI_CACHE_SERVER: "http://ci-cache-server.default.svc.cluster.local:8080"
+  <<: *cci_cache_restore
+  script:
+    - cargo build --release
+  <<: *cci_cache_save
+
+build-npm:
+  stage: build
+  image: node:20-slim
+  before_script:
+    - |
+      curl -sSL https://github.com/spotlessbinco/cluster-ci-cache/releases/latest/download/ci-cache-linux-amd64 -o /usr/local/bin/ci-cache
+      chmod +x /usr/local/bin/ci-cache
+    - |
+      LOCK_HASH=$(sha256sum package-lock.json | cut -d' ' -f1)
+      ci-cache restore \
+        --cache-type npm \
+        --key "npm-linux-amd64-${LOCK_HASH}" \
+        --paths "$HOME/.npm"
+  script:
+    - npm ci
+    - npm run build
+  after_script:
+    - |
+      LOCK_HASH=$(sha256sum package-lock.json | cut -d' ' -f1)
+      ci-cache save \
+        --cache-type npm \
+        --key "npm-linux-amd64-${LOCK_HASH}" \
+        --paths "$HOME/.npm"

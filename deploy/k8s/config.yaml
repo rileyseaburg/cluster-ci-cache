@@ -1,0 +1,95 @@
+---
+# ConfigMap for backend configuration
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ci-cache-config
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+data:
+  config.yaml: |
+    server:
+      listen_addr: "0.0.0.0:8080"
+      max_body_bytes: 536870912   # 512 MiB
+    backend:
+      kind: "local"
+      fs_root: "/var/lib/ci-cache"
+      bucket: "cluster-ci-cache"
+      endpoint: "http://minio.minio.svc.cluster.local:9000"
+      region: "us-east-1"
+      access_key_env: "CI_CACHE_S3_ACCESS_KEY"
+      secret_key_env: "CI_CACHE_S3_SECRET_KEY"
+      path_style: true
+    cache:
+      default_ttl_seconds: 604800
+      compression: "zstd"
+      max_blob_size_mb: 512
+      max_archive_size_gb: 10
+      dedupe: true
+    auth:
+      mode: "serviceaccount"
+      token_env: "CI_CACHE_AUTH_TOKEN"
+---
+# Secret for S3/MinIO credentials (base64-encoded)
+# Create with: kubectl create secret generic ci-cache-s3-creds \
+#   --from-literal=access-key=YOUR_ACCESS_KEY \
+#   --from-literal=secret-key=YOUR_SECRET_KEY
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ci-cache-s3-creds
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+type: Opaque
+data:
+  access-key: ""
+  secret-key: ""
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ci-cache-server-data
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Gi
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ci-cache-server-netpol
+  labels:
+    app.kubernetes.io/name: cluster-ci-cache
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: cluster-ci-cache
+      app.kubernetes.io/component: server
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector: {}
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: cluster-ci-cache
+              app.kubernetes.io/component: agent
+      ports:
+        - protocol: TCP
+          port: 8080
+  egress:
+    - to: []
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+        - protocol: TCP
+          port: 9000
+        - protocol: TCP
+          port: 443

@@ -1,0 +1,76 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/ci-cache-core",
+    "crates/ci-cache-backend-fs",
+    "crates/ci-cache-backend-s3",
+    "crates/ci-cache-cli",
+    "crates/ci-cache-server",
+    "crates/ci-cache-agent",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/spotlessbinco/cluster-ci-cache"
+description = "In-cluster, cache-agnostic CI build cache for Kubernetes"
+
+[workspace.dependencies]
+# Async runtime
+tokio = { version = "1", features = ["full"] }
+tokio-util = { version = "0.7", features = ["io"] }
+futures = "0.3"
+async-trait = "0.1"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+serde_yaml = "0.9"
+
+# Errors & utilities
+anyhow = "1"
+thiserror = "2"
+bytes = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Time
+chrono = { version = "0.4", default-features = false, features = ["clock", "serde"] }
+
+# Hashing
+sha2 = "0.10"
+hex = "0.4"
+
+# Compression
+zstd = "0.13"
+flate2 = "1"
+
+# CLI
+clap = { version = "4", features = ["derive", "env"] }
+
+# HTTP client
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream"] }
+
+# HTTP server
+axum = { version = "0.7", features = ["macros"] }
+tower = "0.5"
+tower-http = { version = "0.6", features = ["trace", "cors", "limit"] }
+hyper = { version = "1", features = ["full"] }
+hyper-util = { version = "0.1", features = ["tokio"] }
+
+# Metrics
+prometheus = "0.13"
+
+# Random for temp names
+uuid = { version = "1", features = ["v4"] }
+
+# Internal crates
+ci-cache-core = { path = "crates/ci-cache-core" }
+ci-cache-backend-fs = { path = "crates/ci-cache-backend-fs" }
+ci-cache-backend-s3 = { path = "crates/ci-cache-backend-s3" }
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = true

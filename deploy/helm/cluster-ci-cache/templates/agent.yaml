@@ -1,0 +1,107 @@
+{{- if .Values.agent.enabled }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ .Release.Name }}-agent
+  labels:
+    {{- include "cluster-ci-cache.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [""]
+    resources: ["nodes"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ .Release.Name }}-agent
+  labels:
+    {{- include "cluster-ci-cache.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ .Release.Name }}-agent
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Release.Name }}-agent
+    namespace: {{ .Release.Namespace }}
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: {{ .Release.Name }}-agent
+  labels:
+    {{- include "cluster-ci-cache.labels" . | nindent 4 }}
+    app.kubernetes.io/component: agent
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/component: agent
+  template:
+    metadata:
+      labels:
+        {{- include "cluster-ci-cache.labels" . | nindent 8 }}
+        app.kubernetes.io/component: agent
+    spec:
+      serviceAccountName: {{ .Release.Name }}-agent
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+      containers:
+        - name: agent
+          image: {{ include "cluster-ci-cache.image" . }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["ci-cache-agent"]
+          args:
+            - --addr
+            - {{ .Values.agent.listenAddr | quote }}
+            - --cache-dir
+            - {{ .Values.agent.cacheDir | quote }}
+            - --upstream
+            - "http://{{ .Release.Name }}-server:8080"
+            - --max-gb
+            - "{{ .Values.agent.maxGB }}"
+          ports:
+            - name: http
+              containerPort: 8090
+          env:
+            - name: RUST_LOG
+              value: "info"
+          volumeMounts:
+            - name: cache
+              mountPath: {{ .Values.agent.cacheDir }}
+          livenessProbe:
+            httpGet: { path: /healthz, port: http }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          readinessProbe:
+            httpGet: { path: /readyz, port: http }
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          resources:
+            {{- toYaml .Values.agent.resources | nindent 12 }}
+      volumes:
+        - name: cache
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-agent
+  labels:
+    {{- include "cluster-ci-cache.labels" . | nindent 4 }}
+    app.kubernetes.io/component: agent
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/component: agent
+  ports:
+    - name: http
+      port: 8090
+      targetPort: http
+      protocol: TCP
+{{- end }}
