@@ -91,10 +91,10 @@ fn hero(version, github_url, release_url) {
 }
 
 fn install_command() {
-    return "<div class='mt-8 max-w-xl mx-auto'>" +
+    return "<div class='mt-8 max-w-2xl mx-auto'>" +
         "<p class='text-xs uppercase tracking-widest text-slate-500 mb-2'>One-line install</p>" +
-        "<div class='flex items-center gap-2 rounded-xl border border-green-500/30 bg-green-500/5 p-3 group cursor-pointer' onclick='navigator.clipboard.writeText(this.querySelector(\"code\").textContent)'>" +
-        "<code class='text-sm text-green-400 font-mono flex-1 overflow-x-auto whitespace-nowrap'>$ curl -fsSL https://github.com/rileyseaburg/cluster-ci-cache/releases/latest/download/install.sh | bash</code>" +
+        "<div class='flex items-center gap-2 rounded-xl border border-green-500/30 bg-green-500/5 p-3 group cursor-pointer' onclick='navigator.clipboard.writeText(this.querySelector(\"code\").textContent.trim())'>" +
+        "<code class='text-xs sm:text-sm text-green-400 font-mono flex-1 overflow-hidden text-ellipsis whitespace-nowrap'>$ curl -fsSL https://github.com/rileyseaburg/cluster-ci-cache/releases/latest/download/install.sh | bash</code>" +
         "<span class='text-slate-500 group-hover:text-green-400 transition shrink-0'>📋</span>" +
         "</div>" +
         "<p class='text-xs text-slate-600 mt-1.5'>Installs ci-cache, ci-cache-server, and ci-cache-agent — click to copy</p>" +
