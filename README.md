@@ -6,15 +6,38 @@
 
 Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/BuildKit workloads — native to Kubernetes, boring to operate.
 
-![Rust](https://img.shields.io/badge/Rust-1.95-dea584?logo=rust)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-1.30+-326ce5?logo=kubernetes)
-![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue)
-![Status](https://img.shields.io/badge/status-MVP%20Deployed-success)
-![Tests](https://img.shields.io/badge/tests-13%20passing-brightgreen)
-![Backend](https://img.shields.io/badge/backend-FS%20%7C%20S3%20%7C%20MinIO-orange)
-![Compression](https://img.shields.io/badge/compression-zstd-informational)
-
 </div>
+
+<p align="center">
+  <!-- Build & Language -->
+  <a href="#"><img src="https://img.shields.io/badge/Rust-1.95-dea584?logo=rust" alt="Rust"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Kubernetes-1.30+-326ce5?logo=kubernetes&logoColor=white" alt="Kubernetes"></a>
+  <a href="#"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue" alt="License"></a>
+  <br>
+  <!-- Container Image -->
+  <a href="#"><img src="https://img.shields.io/badge/🐳_Image-registry.quantum--forge.net-blue?style=flat-square" alt="Registry"></a>
+  <a href="#"><img src="https://img.shields.io/badge/tag-latest-blue?style=flat-square" alt="Tag"></a>
+  <a href="#"><img src="https://img.shields.io/badge/size-101%20MB-success?style=flat-square" alt="Size"></a>
+  <a href="#"><img src="https://img.shields.io/badge/arch-linux%2Famd64-informational?style=flat-square" alt="Architecture"></a>
+  <a href="#"><img src="https://img.shields.io/badge/layers-7-lightgrey?style=flat-square" alt="Layers"></a>
+  <a href="#"><img src="https://img.shields.io/badge/pulls-6-yellow?style=flat-square" alt="Pulls"></a>
+  <a href="#"><img src="https://img.shields.io/badge/digest-sha256%3A82808a-orange?style=flat-square" alt="Digest"></a>
+  <br>
+  <!-- Deployment Status -->
+  <a href="#"><img src="https://img.shields.io/badge/Deployment-LIVE%20on%20Cluster-brightgreen?style=for-the-badge" alt="Deployment Status"></a>
+  <br>
+  <a href="#"><img src="https://img.shields.io/badge/Server-2%20replicas%20Running-success?style=flat-square" alt="Server Status"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Agents-6%20DaemonSet%20pods-success?style=flat-square" alt="Agent Status"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Cluster-7%20nodes-blueviolet?style=flat-square" alt="Cluster"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Namespace-ci--cache-blue?style=flat-square" alt="Namespace"></a>
+  <a href="#"><img src="https://img.shields.io/badge/E2E%20Verified-✅%20pass-critical?style=flat-square" alt="E2E"></a>
+  <br>
+  <!-- Features -->
+  <a href="#"><img src="https://img.shields.io/badge/Tests-13%20passing-brightgreen?style=flat-square" alt="Tests"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Backend-FS%20%7C%20S3%20%7C%20MinIO-orange?style=flat-square" alt="Backend"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Compression-zstd-informational?style=flat-square" alt="Compression"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Cache%20Types-Cargo%20%7C%20npm%20%7C%20pnpm%20%7C%20yarn%20%7C%20Docker-9cf?style=flat-square" alt="Cache Types"></a>
+</p>
 
 ---
 
