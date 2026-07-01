@@ -72,6 +72,55 @@ RUST_LOG=ci_cache_server=debug,info
 - For S3/MinIO backend, scale freely (shared storage)
 - The agent runs as a DaemonSet (one per node)
 
+### Local filesystem backend and replicas
+
+The local filesystem backend stores manifests and blobs under the server pod's
+local `/var/lib/ci-cache` path. Do not run multiple server replicas with this
+backend unless that path is backed by shared `ReadWriteMany` storage. A
+ClusterIP service can route a restore request to a different pod than the save
+request, which makes warm caches look like random misses.
+
+For a single-pod local filesystem deployment, pin the server to one replica:
+
+```bash
+kubectl -n ci-cache scale deploy/ci-cache-server --replicas=1
+kubectl -n ci-cache rollout status deploy/ci-cache-server
+```
+
+Use S3, MinIO, or shared PVC storage before scaling the server horizontally.
+
+### Runner namespace access
+
+CI runner pods must be allowed to reach the server service. If a NetworkPolicy
+selects the cache server pods, make sure it allows ingress from the runner
+namespace and runner pod labels.
+
+Example Forgejo runner access rule:
+
+```yaml
+ingress:
+  - from:
+      - namespaceSelector:
+          matchLabels:
+            kubernetes.io/metadata.name: forgejo-actions
+        podSelector:
+          matchLabels:
+            app: forgejo-act-runner-dind
+    ports:
+      - port: 8080
+        protocol: TCP
+```
+
+Validate connectivity from a runner pod before relying on cache acceleration:
+
+```bash
+kubectl -n forgejo-actions exec deploy/forgejo-act-runner-dind -c runner -- \
+  wget -qO- http://ci-cache-server.ci-cache.svc.cluster.local:8080/healthz
+```
+
+The expected response is `ok`. Workflows should fail fast on `ci-cache health`
+instead of silently falling back to slow uncached builds.
+
 ## Retention
 
 - TTLs are set per-manifest (default 7 days)
