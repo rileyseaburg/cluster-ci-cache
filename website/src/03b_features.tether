@@ -1,0 +1,17 @@
+fn features() {
+    return "<section class='section' id='features'>" +
+        "<h2>Features</h2>" +
+        "<p class='lead'>Not a key-value store. A content-addressed artifact fabric with manifest-level deduplication, digest verification, and path-traversal hardening.</p>" +
+        "<div class='grid'>" +
+        feat("storage", "Content-addressed blobs", "Every blob stored by its SHA-256 digest. Identical content across cache keys, namespaces, and types deduplicates automatically — store once, reference everywhere.") +
+        feat("security", "Archive hardening", "Custom archive format with path traversal protection, absolute path rejection, symlink skipping, decompression bomb limits, and digest verification on upload and restore.") +
+        feat("backends", "Backend-agnostic", "Filesystem and PVC backend for zero-dependency local dev. S3 and MinIO backend for production shared storage. Same HTTP API regardless of backend.") +
+        feat("k8s", "Kubernetes-native", "Deployment with replicas, DaemonSet agent, ServiceAccount, RBAC, ConfigMap, NetworkPolicy, PVC. Health and readiness probes. Helm chart included.") +
+        feat("metrics", "Observable", "Prometheus metrics for hits, misses, bytes transferred, dedup ratio, and latency histograms. Structured JSON logs. Standard healthz and readyz endpoints.") +
+        feat("concurrency", "Concurrency-safe", "Atomic manifest publishing via temp-file-and-rename. Save sessions prevent partial manifests. Idempotent blob storage. No distributed locks required for correctness.") +
+        "</div>" +
+        "<div class='hero-screenshot' style='margin-top:32px'>" +
+        "<img src='http://192.168.50.223:9000/cluster-ci-cache/security.png' alt='Archive hardening — path traversal protection, bomb prevention, and digest verification' loading='lazy'>" +
+        "</div>" +
+        "</section>"
+}

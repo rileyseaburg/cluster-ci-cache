@@ -1,0 +1,24 @@
+fn doc(version, github_url, release_url, body) {
+    return "<!DOCTYPE html><html lang='en'><head>" +
+        "<meta charset='UTF-8'>" +
+        "<meta name='viewport' content='width=device-width, initial-scale=1'>" +
+        "<title>Cluster CI Cache — In-Cluster CI Build Cache for Kubernetes</title>" +
+        "<meta name='description' content='A Kubernetes-native, content-addressed build cache for Rust, npm, and Docker workloads.'>" +
+        og_meta() +
+        styles() +
+        "</head><body><div class='container'>" + body + "</div></body></html>"
+}
+
+fn og_meta() {
+    return "<meta property='og:type' content='website'>" +
+        "<meta property='og:title' content='Cluster CI Cache — In-Cluster Build Cache for Kubernetes'>" +
+        "<meta property='og:description' content='Fast, secure, deduplicated build caching for Rust, npm, and Docker workloads — native to Kubernetes.'>" +
+        "<meta property='og:image' content='http://192.168.50.223:9000/cluster-ci-cache/og-image.png'>" +
+        "<meta property='og:url' content='https://cicache.quantum-forge.net'>" +
+        "<meta property='og:site_name' content='Cluster CI Cache'>" +
+        "<meta name='twitter:card' content='summary_large_image'>" +
+        "<meta name='twitter:title' content='Cluster CI Cache'>" +
+        "<meta name='twitter:description' content='In-cluster, content-addressed CI build cache for Kubernetes.'>" +
+        "<meta name='twitter:image' content='http://192.168.50.223:9000/cluster-ci-cache/og-image.png'>" +
+        "<link rel='icon' type='image/png' href='http://192.168.50.223:9000/cluster-ci-cache/og-image.png'>"
+}

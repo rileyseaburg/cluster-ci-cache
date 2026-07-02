@@ -76,16 +76,15 @@ fn og_meta() {
     return "<meta property='og:type' content='website'>" +
         "<meta property='og:title' content='Cluster CI Cache — In-Cluster Build Cache for Kubernetes'>" +
         "<meta property='og:description' content='Fast, secure, deduplicated build caching for Rust, npm, and Docker workloads — native to Kubernetes.'>" +
-        "<meta property='og:image' content='https://cicache.quantum-forge.net/static/og-image.png'>" +
+        "<meta property='og:image' content='http://192.168.50.223:9000/cluster-ci-cache/og-image.png'>" +
         "<meta property='og:url' content='https://cicache.quantum-forge.net'>" +
         "<meta property='og:site_name' content='Cluster CI Cache'>" +
         "<meta name='twitter:card' content='summary_large_image'>" +
         "<meta name='twitter:title' content='Cluster CI Cache'>" +
         "<meta name='twitter:description' content='In-cluster, content-addressed CI build cache for Kubernetes.'>" +
-        "<meta name='twitter:image' content='https://cicache.quantum-forge.net/static/og-image.png'>" +
-        "<link rel='icon' type='image/png' href='/static/og-image.png'>"
+        "<meta name='twitter:image' content='http://192.168.50.223:9000/cluster-ci-cache/og-image.png'>" +
+        "<link rel='icon' type='image/png' href='http://192.168.50.223:9000/cluster-ci-cache/og-image.png'>"
 }
-
 fn styles() {
     return "<style>" +
         ":root{--bg:#0b1120;--surface:#131c31;--border:#1e2d4a;--text:#e2e8f0;" +
@@ -131,7 +130,9 @@ fn styles_hero() {
         ".btn-blue{background:var(--blue);color:#fff}" +
         ".btn-blue:hover{background:var(--blue2)}" +
         ".btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border)}" +
-        ".btn-ghost:hover{border-color:var(--text3);color:var(--text)}"
+        ".btn-ghost:hover{border-color:var(--text3);color:var(--text)}" +
+        ".hero-screenshot{margin-top:48px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--surface)}" +
+        ".hero-screenshot img{width:100%;height:auto;display:block}"
 }
 
 fn styles_grid() {
@@ -178,7 +179,6 @@ fn logo_svg() {
         "<circle cx='16' cy='22' r='1.5' fill='#22c55e'/>" +
         "</svg>"
 }
-
 fn hero(version, release_url) {
     return "<header class='hero' id='top'>" +
         "<h1>Content-addressed CI<br>build cache for Kubernetes</h1>" +
@@ -194,11 +194,10 @@ fn hero(version, release_url) {
         "<a href='#quickstart' class='btn btn-ghost'>Documentation</a>" +
         "</div>" +
         "<div class='hero-screenshot'>" +
-        "<img src='/static/hero.png' alt='Cluster CI Cache architecture diagram' loading='lazy'>" +
+        "<img src='http://192.168.50.223:9000/cluster-ci-cache/hero.png' alt='Cluster CI Cache architecture diagram' loading='lazy'>" +
         "</div>" +
         "</header>"
 }
-
 fn features() {
     return "<section class='section' id='features'>" +
         "<h2>Features</h2>" +
@@ -210,9 +209,12 @@ fn features() {
         feat("k8s", "Kubernetes-native", "Deployment with replicas, DaemonSet agent, ServiceAccount, RBAC, ConfigMap, NetworkPolicy, PVC. Health and readiness probes. Helm chart included.") +
         feat("metrics", "Observable", "Prometheus metrics for hits, misses, bytes transferred, dedup ratio, and latency histograms. Structured JSON logs. Standard healthz and readyz endpoints.") +
         feat("concurrency", "Concurrency-safe", "Atomic manifest publishing via temp-file-and-rename. Save sessions prevent partial manifests. Idempotent blob storage. No distributed locks required for correctness.") +
-        "</div></section>"
+        "</div>" +
+        "<div class='hero-screenshot' style='margin-top:32px'>" +
+        "<img src='http://192.168.50.223:9000/cluster-ci-cache/security.png' alt='Archive hardening — path traversal protection, bomb prevention, and digest verification' loading='lazy'>" +
+        "</div>" +
+        "</section>"
 }
-
 fn feat(label, title, desc) {
     return "<div class='feat'><span class='label'>" + label + "</span>" +
         "<h3>" + title + "</h3><p>" + desc + "</p></div>"

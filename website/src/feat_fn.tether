@@ -1,0 +1,4 @@
+fn feat(label, title, desc) {
+    return "<div class='feat'><span class='label'>" + label + "</span>" +
+        "<h3>" + title + "</h3><p>" + desc + "</p></div>"
+}

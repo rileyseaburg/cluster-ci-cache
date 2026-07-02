@@ -1,0 +1,19 @@
+fn hero(version, release_url) {
+    return "<header class='hero' id='top'>" +
+        "<h1>Content-addressed CI<br>build cache for Kubernetes</h1>" +
+        "<p>Deduplicated, secure, backend-agnostic caching for Rust, npm, and Docker workloads. Runs inside your cluster with zero external dependencies.</p>" +
+        "<div class='install-box' onclick='navigator.clipboard.writeText(this.querySelector(\"code\").textContent.trim())'>" +
+        "<span class='prompt'>$</span>" +
+        "<code>curl -fsSL https://github.com/rileyseaburg/cluster-ci-cache/releases/latest/download/install.sh | bash</code>" +
+        "<span class='copy'>COPY</span>" +
+        "</div>" +
+        "<p class='install-hint'>Installs ci-cache CLI, server, and agent. Click to copy.</p>" +
+        "<div class='hero-btns'>" +
+        "<a href='" + release_url + "' class='btn btn-blue'>Download v" + version + "</a>" +
+        "<a href='#quickstart' class='btn btn-ghost'>Documentation</a>" +
+        "</div>" +
+        "<div class='hero-screenshot'>" +
+        "<img src='http://192.168.50.223:9000/cluster-ci-cache/hero.png' alt='Cluster CI Cache architecture diagram' loading='lazy'>" +
+        "</div>" +
+        "</header>"
+}

@@ -1,0 +1,11 @@
+fn render(version, github_url, release_url) {
+    let body = nav(github_url, release_url) +
+        hero(version, release_url) +
+        features() +
+        architecture() +
+        quickstart() +
+        stats() +
+        community(github_url, release_url)
+    return doc(version, github_url, release_url, body)
+}
+
