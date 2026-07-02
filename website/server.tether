@@ -192,7 +192,11 @@ fn hero(version, release_url) {
         "<div class='hero-btns'>" +
         "<a href='" + release_url + "' class='btn btn-blue'>Download v" + version + "</a>" +
         "<a href='#quickstart' class='btn btn-ghost'>Documentation</a>" +
-        "</div></header>"
+        "</div>" +
+        "<div class='hero-screenshot'>" +
+        "<img src='/static/hero.png' alt='Cluster CI Cache architecture diagram' loading='lazy'>" +
+        "</div>" +
+        "</header>"
 }
 
 fn features() {
