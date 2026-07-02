@@ -5,6 +5,7 @@ WORKDIR /app
 RUN cargo install tetherscript --version 0.1.0-alpha.12
 
 COPY server.tether ./server.tether
+COPY static ./static
 
 EXPOSE 8787
 

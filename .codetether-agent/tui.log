@@ -1,0 +1,944 @@
+2026-07-02T20:31:35.447384Z  INFO codetether_agent::crash: Crash reporting enabled without auth headers. Set CODETETHER_CRASH_REPORT_AUTH_TOKEN or CODETETHER_CRASH_REPORT_API_KEY if your endpoint requires authentication.
+2026-07-02T20:31:35.451704Z  WARN codetether_agent::bus::s3_sink::s3_spawn: Bus S3 sink not configured - set MinIO env vars or Vault error=No MinIO credentials found. Set MINIO_ENDPOINT/MINIO_ACCESS_KEY/MINIO_SECRET_KEY, CODETETHER_CHAT_SYNC_MINIO_* env vars, or configure chat-sync-minio in Vault.
+2026-07-02T20:31:35.452057Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-cluster-ci-cache-bb49
+2026-07-02T20:31:35.452081Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-cluster-ci-cache-bb49
+2026-07-02T20:31:35.452117Z  WARN codetether_agent::a2a::spawn: A2A LAN broadcast discovery unavailable error=failed to bind A2A LAN discovery UDP socket
+2026-07-02T20:31:35.452229Z  INFO codetether_agent::a2a::mdns: Announced A2A peer over mDNS instance=ubuntu-dev-cluster-ci-cache-bb49 port=46431 service_type="_codetether-a2a._tcp.local."
+2026-07-02T20:31:35.452336Z  INFO codetether_agent::a2a::spawn: A2A peer listening (background mode) agent=ubuntu-dev-cluster-ci-cache-bb49 bind_addr=0.0.0.0:46431 public_url=http://192.168.50.101:46431 mdns=true
+2026-07-02T20:31:35.452352Z  INFO codetether_agent::tui::app::run::peer: TUI A2A peer endpoint ready agent=ubuntu-dev-cluster-ci-cache-bb49 bind_addr=0.0.0.0:46431 public_url=http://192.168.50.101:46431
+2026-07-02T20:31:35.457828Z  INFO codetether_agent::tui::app::run::secrets: Connected to HashiCorp Vault for secrets management
+2026-07-02T20:31:35.487747Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.487749Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.487788Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.487809Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-spotlessbinco-8024 peer_url=http://192.168.50.101:38213 endpoint=http://192.168.50.101:38213 via="mdns"
+2026-07-02T20:31:35.487812Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=cloud-root-b1da peer_url=http://192.168.50.133:34877 endpoint=http://192.168.50.133:34877 via="mdns"
+2026-07-02T20:31:35.487840Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.488015Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.488037Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.488044Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.488186Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.488358Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.488399Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.488473Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.488520Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.488535Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.488668Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.488712Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.488800Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.488828Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=rileys-laptop-hardware-42d0 peer_url=http://192.168.50.187:57049 endpoint=http://192.168.50.187:57049 via="mdns"
+2026-07-02T20:31:35.493572Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.101:38213
+2026-07-02T20:31:35.494286Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494315Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494355Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.494405Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494440Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494453Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.494475Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.494490Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494508Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.494530Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494566Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494581Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494598Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494621Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494640Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.133:34877
+2026-07-02T20:31:35.494648Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494675Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.494698Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494704Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494720Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494734Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494751Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494763Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494787Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.494812Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.494833Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.494847Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.494851Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-ci-images-6092 peer_url=http://192.168.50.101:40837 endpoint=http://192.168.50.101:40837 via="mdns"
+2026-07-02T20:31:35.496491Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.187:57049
+2026-07-02T20:31:35.498169Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498192Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498210Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498225Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.498238Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498259Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498278Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498298Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498324Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498341Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498361Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498387Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498414Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498426Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498445Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498455Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498473Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498489Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498503Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498510Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498530Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498543Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498558Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498571Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498585Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498601Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498615Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498629Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498650Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498663Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498685Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498686Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.101:40837
+2026-07-02T20:31:35.498700Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498720Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498732Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.498751Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498756Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498814Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498836Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498857Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498876Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498901Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498915Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.498930Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498945Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.498960Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.498973Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.498990Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.499007Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.499028Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:31:35.499044Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.499065Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.499079Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.499108Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.499125Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:31:35.499140Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.499161Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:31:35.499176Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:31:35.632379Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.632416Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7 peer_url=http://192.168.50.112:51996 endpoint=http://192.168.50.112:51996 via="mdns"
+2026-07-02T20:31:35.637316Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.637365Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4 peer_url=http://192.168.50.112:59682 endpoint=http://192.168.50.112:59682 via="mdns"
+2026-07-02T20:31:35.642064Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.642113Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-code-6756 peer_url=http://192.168.50.112:58251 endpoint=http://192.168.50.112:58251 via="mdns"
+2026-07-02T20:31:35.645197Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.649559Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.649579Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-programming-5656 peer_url=http://192.168.50.112:56479 endpoint=http://192.168.50.112:56479 via="mdns"
+2026-07-02T20:31:35.657034Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.660825Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.663618Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.668687Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.676745Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.684710Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.691798Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.701019Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.705043Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.720084Z  INFO codetether_agent::provider::init_vault: Found 24 providers configured in Vault
+2026-07-02T20:31:35.726555Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.726565Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.735274Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.745849Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.759675Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.783827Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.792606Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.799406Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.809957Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.839614Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.843436Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.845890Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.847314Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.848662Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.852098Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:31:35.855338Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:31:35.858463Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:31:35.860309Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:31:35.867291Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.112:51996
+2026-07-02T20:31:35.867339Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.112:59682
+2026-07-02T20:31:35.946598Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.112:58251
+2026-07-02T20:31:35.960519Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.112:56479
+2026-07-02T20:31:36.100878Z  WARN codetether_agent::provider::init_env: Failed to init local_cuda from env: local_cuda requires --features candle-cuda
+2026-07-02T20:31:36.100902Z  INFO codetether_agent::provider::init_vault: Registered 22 providers mode="Vault + env/AWS fallback"
+2026-07-02T20:31:36.279091Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=812adb80-0781-482f-8ec2-3716d3e1ff73
+2026-07-02T20:31:36.283367Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=9b0b3101-90f8-423e-a6d7-4e4b4ec0fdc6
+2026-07-02T20:31:36.283555Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=99392681-fd95-48a4-bb06-c0f624a9353c
+2026-07-02T20:31:36.286056Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=3e3766af-20f8-47b9-b3f4-5202a00f9cfa
+2026-07-02T20:31:36.341630Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=ef5a5ac7-9525-47ee-90ca-395a72941d23
+2026-07-02T20:31:36.342516Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=c877a03b-8b6f-453f-945e-2f03898aecb1
+2026-07-02T20:31:36.345922Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=7e34c50f-adea-47a2-bf82-1257cb52e2bb
+2026-07-02T20:31:36.346925Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=362c0a70-b5d7-4d9f-9cf0-e761a459c3c3
+2026-07-02T20:32:22.102027Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:22.102125Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:22.102171Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:22.201326Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:22.201530Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:22.201533Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:22.201555Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:22.201527Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:22.201687Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:22.201793Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:22.202221Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:22.202309Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:22.202361Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:31.337207Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:32:31.377288Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:32:31.378709Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:32:31.877159Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:31.897037Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:32:31.911979Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:32:45.704229Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:33:11.854456Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:11.932885Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:11.961919Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:11.992292Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:11.992498Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:11.992581Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:12.065055Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:12.065283Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:12.065294Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:12.065345Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:12.065416Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:12.110592Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:12.119910Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:12.127122Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:12.134853Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:12.159412Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:12.159473Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.716825Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:21.723988Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:21.736286Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.744539Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.793315Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.801824Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.818603Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.826081Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.832137Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.836282Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.873523Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.916031Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.920264Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.923224Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.932842Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:33:21.949521Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:21.961130Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:33:35.452706Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:33:35.452765Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:33:35.452823Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=cloud-root-b1da
+2026-07-02T20:33:35.558140Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:33:35.563487Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:05.453347Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:34:05.453411Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:34:05.453419Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:34:05.453422Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:34:05.453433Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:34:05.453436Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:34:05.453438Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:05.453448Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:05.453450Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:14.721041Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:14.721340Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:14.722546Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:14.725089Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:14.725356Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:14.725760Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:15.732102Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:15.732135Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-spotlessbinco-8024 peer_url=http://192.168.50.101:38213 endpoint=http://192.168.50.101:38213 via="mdns"
+2026-07-02T20:34:34.741646Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:34:34.741704Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=cloud-root-b1da peer_url=http://192.168.50.133:34877 endpoint=http://192.168.50.133:34877 via="mdns"
+2026-07-02T20:34:34.767048Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:34.767087Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:34.767712Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:34.768342Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:34.768366Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:34.768383Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:34.768752Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:34:36.351672Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:34:36.414978Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:34:36.415010Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-programming-5656 peer_url=http://192.168.50.112:56479 endpoint=http://192.168.50.112:56479 via="mdns"
+2026-07-02T20:34:44.951371Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:34:44.951408Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4 peer_url=http://192.168.50.112:59682 endpoint=http://192.168.50.112:59682 via="mdns"
+2026-07-02T20:34:44.984986Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:34:45.096953Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:34:45.117672Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:34:45.141949Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:34:45.174376Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:34:50.132144Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.133131Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.133270Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.133749Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.134797Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.135197Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.135705Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.135791Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.136092Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.136377Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.137171Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.137302Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.137759Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:34:50.410344Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.412466Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.412651Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.412830Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.412986Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.413087Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.413157Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.413225Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.413229Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.413746Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:34:50.413820Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:35:10.545615Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:35:10.622620Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:35:10.628590Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:35:12.126451Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:12.147899Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:12.157119Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:20.921917Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:20.947179Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:21.077349Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:21.185660Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:21.938230Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:35:45.753571Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:35:45.754012Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:36:15.759177Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:36:15.765073Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:36:15.791989Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:36:16.018891Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:36:16.196491Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:36:16.204892Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:36:16.222307Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:36:26.012685Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:36:26.030332Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:36:26.136911Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:36:26.196332Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:36:26.211328Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:36:26.220445Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:36:26.228459Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:36:26.242497Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:36:35.264734Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:36:46.180305Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:36:47.377720Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:36:57.257521Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:37:10.489009Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.489698Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.490040Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.490068Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.490187Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.491162Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.491683Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.491742Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.492311Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.492338Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:10.492668Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:44.797469Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.797469Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.798014Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.798255Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.799618Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.800055Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.801021Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.801333Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.801405Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.803806Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.803928Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:44.805206Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:37:45.790972Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:45.791053Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:37:45.791853Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:37:45.792668Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:37:55.848747Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:37:55.932952Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:05.453664Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:38:05.453740Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:38:05.453752Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=cloud-root-b1da
+2026-07-02T20:38:05.453757Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:38:05.453840Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:38:05.453850Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:38:05.824961Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:38:05.856216Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:38:05.856251Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-code-6756 peer_url=http://192.168.50.112:58251 endpoint=http://192.168.50.112:58251 via="mdns"
+2026-07-02T20:38:05.898075Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:38:11.797112Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:21.666199Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:47.160618Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:38:47.193904Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:47.205535Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:57.199444Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:38:57.242689Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:57.251193Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:57.264712Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:38:57.272405Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:39:15.037261Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:39:15.040538Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:39:15.840401Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:39:35.453585Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:39:35.453635Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:39:35.453642Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=ubuntu-dev-ci-images-6092
+2026-07-02T20:39:35.453645Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:39:35.453654Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:39:35.453656Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:39:37.045294Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:39:37.045352Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=cloud-root-b1da peer_url=http://192.168.50.133:34877 endpoint=http://192.168.50.133:34877 via="mdns"
+2026-07-02T20:39:37.053972Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:39:37.053994Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-ci-images-6092 peer_url=http://192.168.50.101:40837 endpoint=http://192.168.50.101:40837 via="mdns"
+2026-07-02T20:39:37.054048Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:39:37.054061Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-spotlessbinco-8024 peer_url=http://192.168.50.101:38213 endpoint=http://192.168.50.101:38213 via="mdns"
+2026-07-02T20:39:49.189716Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:39:49.189771Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:39:49.189884Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:39:57.892383Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:39:57.915654Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:39:58.121927Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:39:58.204403Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:39:58.207953Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:40:05.452715Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:40:05.452810Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:40:05.452821Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:40:14.861659Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:40:14.861723Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:40:14.862151Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:40:14.862515Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:40:14.862607Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:40:14.862647Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:40:22.601636Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:40:22.602149Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:40:22.602816Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:40:22.602922Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:40:22.605392Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:40:22.606343Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:40:44.877535Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:40:44.877914Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:40:44.878030Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:40:44.878080Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:40:44.878850Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:40:44.881616Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:41:05.453554Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:41:05.453621Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:41:05.453631Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:41:22.996554Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:41:23.066548Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:41:35.453161Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:41:35.453217Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:41:35.453242Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:41:35.453244Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:41:35.453251Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:41:35.453253Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=ubuntu-dev-ci-images-6092
+2026-07-02T20:42:05.453578Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:42:05.453641Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:42:05.453649Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:42:15.894720Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:42:15.894808Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-ci-images-6092 peer_url=http://192.168.50.101:40837 endpoint=http://192.168.50.101:40837 via="mdns"
+2026-07-02T20:42:15.898000Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:42:15.898024Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-spotlessbinco-8024 peer_url=http://192.168.50.101:38213 endpoint=http://192.168.50.101:38213 via="mdns"
+2026-07-02T20:42:25.943697Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:42:25.943737Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4 peer_url=http://192.168.50.112:59682 endpoint=http://192.168.50.112:59682 via="mdns"
+2026-07-02T20:42:35.453001Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:42:35.453060Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:42:35.453068Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=cloud-root-b1da
+2026-07-02T20:42:35.453071Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:42:35.453082Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:42:35.453084Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=rileys-laptop-hardware-42d0
+2026-07-02T20:42:39.008989Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:42:39.009038Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=rileys-laptop-hardware-42d0 peer_url=http://192.168.50.187:57049 endpoint=http://192.168.50.187:57049 via="mdns"
+2026-07-02T20:42:48.908594Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:42:48.909314Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:42:48.909850Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:42:49.835473Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:43:05.452754Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:43:05.452837Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:43:05.452864Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:43:24.920543Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:43:24.921310Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:43:24.921929Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:43:24.922149Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:43:24.922546Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:43:24.924022Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:43:44.938337Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.939212Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.940222Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.940816Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.940876Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.941838Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.942014Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.942934Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:44.943756Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:43:55.933687Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:44:05.453154Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:44:05.453224Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:44:05.453236Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:44:13.998671Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:44:13.999116Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:44:24.266602Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:44:24.266637Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7 peer_url=http://192.168.50.112:51996 endpoint=http://192.168.50.112:51996 via="mdns"
+2026-07-02T20:44:24.272456Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:44:24.288665Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.112:51996
+2026-07-02T20:45:15.967072Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:45:15.969362Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:45:35.452941Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:45:35.453002Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:45:35.453029Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=rileys-laptop-hardware-42d0
+2026-07-02T20:45:39.627711Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:45:39.627747Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=rileys-laptop-hardware-42d0 peer_url=http://192.168.50.187:57049 endpoint=http://192.168.50.187:57049 via="mdns"
+2026-07-02T20:45:50.073092Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:45:50.075031Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:45:50.097769Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:45:50.100065Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:46:05.453133Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:46:05.453191Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:46:05.453201Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:46:51.004462Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:46:51.005596Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:46:51.008738Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:46:51.009207Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:46:51.009956Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:46:51.010302Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:46:51.010466Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:46:56.002751Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:47:16.420409Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:47:16.420453Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7 peer_url=http://192.168.50.112:51996 endpoint=http://192.168.50.112:51996 via="mdns"
+2026-07-02T20:47:25.124871Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:47:35.453218Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:47:35.453274Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:47:35.453282Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:16.036966Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:48:16.038773Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:16.064310Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:16.064339Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-ci-images-6092 peer_url=http://192.168.50.101:40837 endpoint=http://192.168.50.101:40837 via="mdns"
+2026-07-02T20:48:50.628235Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:50.628648Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:50.629214Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:50.629345Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:50.630766Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:50.631870Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:48:50.679168Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.679347Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.679453Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.679956Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.680138Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.680503Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.680771Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.681274Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.681358Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.681559Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.681596Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.682488Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.682927Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.682948Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.682983Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.682997Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.683339Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:48:50.683691Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:49:05.453271Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:49:05.453341Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:49:05.453355Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:49:45.092891Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.093029Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.094227Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.094311Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.095641Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.096323Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.096797Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.096854Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.096971Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:45.097190Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:49:56.086824Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:49:56.088190Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:50:15.528685Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:50:15.528927Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:50:15.529066Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:50:15.529297Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:50:16.883114Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:50:16.883310Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-code-6756 peer_url=http://192.168.50.112:58251 endpoint=http://192.168.50.112:58251 via="mdns"
+2026-07-02T20:50:25.787541Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:50:25.787607Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7 peer_url=http://192.168.50.112:51996 endpoint=http://192.168.50.112:51996 via="mdns"
+2026-07-02T20:50:25.809043Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:50:26.774018Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:50:26.810338Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:50:26.810393Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4 peer_url=http://192.168.50.112:59682 endpoint=http://192.168.50.112:59682 via="mdns"
+2026-07-02T20:50:51.344988Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:50:51.345050Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-programming-5656 peer_url=http://192.168.50.112:56479 endpoint=http://192.168.50.112:56479 via="mdns"
+2026-07-02T20:51:25.453297Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:25.454770Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:25.516167Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:25.516207Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:25.516181Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:25.516391Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:26.126795Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:51:26.127115Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:51:26.129312Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:51:35.404953Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.428418Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.430385Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.528500Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.571393Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.589426Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.601753Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.687968Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:35.717747Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:51:41.043173Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:51:41.043222Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=cloud-root-b1da peer_url=http://192.168.50.133:34877 endpoint=http://192.168.50.133:34877 via="mdns"
+2026-07-02T20:51:51.916215Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:51:52.973534Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:51:52.973652Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:51:52.973720Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:51:52.974173Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:51:52.975343Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:51:52.996089Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:51:53.004753Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:52:01.785957Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:52:01.876166Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:52:01.894457Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:52:01.903313Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:52:01.925290Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:52:01.951642Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:52:01.954021Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:52:01.959851Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:52:05.453171Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:52:05.453254Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:52:05.453263Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:52:25.161516Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:52:45.161573Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:52:45.161623Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:52:45.162172Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:52:45.163470Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:52:45.163584Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:52:45.163690Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:52:56.177605Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:52:56.184770Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:53:16.062071Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.062961Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.063192Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.064310Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.064454Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.064800Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.065535Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.065733Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.066366Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.066795Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:53:16.411191Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:53:16.411233Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7 peer_url=http://192.168.50.112:51996 endpoint=http://192.168.50.112:51996 via="mdns"
+2026-07-02T20:53:17.286997Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:53:26.311469Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:53:27.286065Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:53:27.360210Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:53:35.453078Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:53:35.453152Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:53:35.453167Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-77b4
+2026-07-02T20:53:35.453190Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:53:35.453206Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:53:35.453209Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-programming-5656
+2026-07-02T20:54:25.535677Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:54:25.638168Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:54:26.224894Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:54:26.241031Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:54:35.283187Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:54:35.418365Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:54:35.423174Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:54:35.453313Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:54:35.453355Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:54:35.453363Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=cloud-root-b1da
+2026-07-02T20:54:35.453366Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:54:35.453376Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:54:35.453379Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=rileys-laptop-hardware-42d0
+2026-07-02T20:54:40.822560Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:54:40.822606Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=cloud-root-b1da peer_url=http://192.168.50.133:34877 endpoint=http://192.168.50.133:34877 via="mdns"
+2026-07-02T20:54:40.842423Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:54:40.842457Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=rileys-laptop-hardware-42d0 peer_url=http://192.168.50.187:57049 endpoint=http://192.168.50.187:57049 via="mdns"
+2026-07-02T20:54:58.063007Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:54:58.063173Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:54:58.063992Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:54:58.065250Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:54:58.066345Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:55:25.261003Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:25.261005Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:25.261335Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:25.263213Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:25.263295Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:25.263390Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:25.266068Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:25.274596Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:55:45.261109Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:55:45.261631Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:55:56.293194Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:56:05.453833Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:56:05.453909Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:56:05.453925Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-code-6756
+2026-07-02T20:56:05.453930Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:56:05.453941Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:56:05.453944Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-usai-frontend-25e7
+2026-07-02T20:56:28.342665Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:56:28.359911Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:56:28.360098Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:56:35.468485Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:56:35.490040Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:56:35.490052Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=ubuntu-dev-ci-images-6092
+2026-07-02T20:57:05.453488Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:57:05.453579Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:57:05.453593Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=rileys-laptop-hardware-42d0
+2026-07-02T20:57:16.375579Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:57:16.375800Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=ubuntu-dev-ci-images-6092 peer_url=http://192.168.50.101:40837 endpoint=http://192.168.50.101:40837 via="mdns"
+2026-07-02T20:57:16.379180Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:57:35.324660Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:57:35.324923Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:57:35.325542Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:57:35.327092Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:57:35.328387Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:57:35.452885Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:57:35.452970Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:57:35.452979Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=cloud-root-b1da
+2026-07-02T20:57:42.691974Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=cloud-root-b1da
+2026-07-02T20:57:42.692018Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=cloud-root-b1da peer_url=http://192.168.50.133:34877 endpoint=http://192.168.50.133:34877 via="mdns"
+2026-07-02T20:57:42.716310Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:57:42.716390Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=rileys-laptop-hardware-42d0 peer_url=http://192.168.50.187:57049 endpoint=http://192.168.50.187:57049 via="mdns"
+2026-07-02T20:57:42.717816Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:57:51.905855Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:57:51.906818Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:57:51.907622Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:57:51.909123Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:57:53.761819Z  INFO codetether_agent::a2a::server::server_intro: A2A intro short-circuited (no LLM call) task_id=fdbf6def-e3c7-4ee0-8908-3333cb1ec3ea
+2026-07-02T20:57:54.479133Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.479183Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f peer_url=http://192.168.50.112:51804 endpoint=http://192.168.50.112:51804 via="mdns"
+2026-07-02T20:57:54.501959Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.507819Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.547913Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.558552Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.585578Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.595488Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.601308Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:57:54.659564Z  INFO codetether_agent::a2a::intro::send: Auto-intro message sent peer=http://192.168.50.112:51804
+2026-07-02T20:58:56.358269Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:58:56.380554Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:58:56.381379Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:58:56.383875Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:59:29.709136Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:59:29.709596Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T20:59:29.761427Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:59:29.762246Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:59:29.763856Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T20:59:29.890308Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.890400Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.890645Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.891621Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.892383Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.893298Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.894511Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.894553Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:29.894642Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T20:59:35.452737Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:59:35.452818Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=cloud-root-b1da
+2026-07-02T20:59:35.452827Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=cloud-root-b1da
+2026-07-02T20:59:35.452830Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:59:35.452841Z  INFO codetether_agent::bus::registry: Agent deregistered from bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T20:59:35.452843Z  INFO codetether_agent::a2a::mdns_liveness: A2A peer aged out (mDNS TTL expired) peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T21:00:36.401789Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:00:36.421371Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:00:42.564424Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:00:42.567382Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:01:06.912991Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:01:06.914150Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:01:06.915224Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:01:06.915581Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:01:12.906094Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:01:45.435625Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:01:45.435737Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:01:45.435767Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:01:45.435860Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:01:45.436125Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:01:45.441748Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:01:45.441811Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:01:45.441889Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:02:04.784912Z  INFO codetether_agent::session::helper::prompt_events: Available providers: ["glm5", "minimax-credits", "lmstudio", "minimax", "vertex-anthropic", "openrouter", "vertex-glm", "cerebras", "moltbook", "qwen-fast", "deepseek", "chat-sync-minio", "openai-codex", "moonshotai", "qwen-heavy", "novita", "stepfun", "google", "zai", "gemini-web", "bedrock", "github-copilot"]
+2026-07-02T21:02:04.962341Z  INFO codetether_agent::provider::metrics: Provider request completed provider=glm5 model=gpt-4o latency_ms=177 input_tokens=0 output_tokens=0 tps="0.0"
+2026-07-02T21:02:04.962452Z  WARN codetether_agent::tool::sandbox: No CODETETHER_PLUGIN_SIGNING_KEY set — generated ephemeral key. Plugin signatures will not persist across restarts.
+2026-07-02T21:02:05.015418Z  INFO codetether_agent::session::helper::prompt_events: Using model: gpt-5.5 via provider: openai-codex
+2026-07-02T21:02:05.015492Z  INFO codetether_agent::session::helper::prompt_events: Available tools: 65
+2026-07-02T21:02:05.025177Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=1
+2026-07-02T21:02:05.029642Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=1 has_tools=true
+2026-07-02T21:02:05.453042Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.458158Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.458432Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.461306Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.461320Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.461301Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.461418Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.461565Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.461881Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.461994Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.463947Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.470559Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.470772Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.473914Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.475177Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.475270Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.475877Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.477783Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.478124Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.478491Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.482990Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483149Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483241Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483348Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483454Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483458Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483482Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483594Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483730Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.483757Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:05.484533Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:02:13.604886Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=8577 ttft_ms=370 input_tokens=14197 output_tokens=188 tps="21.9"
+2026-07-02T21:02:13.605613Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=1 num_tools=3 total_tool_calls=3
+2026-07-02T21:02:13.605628Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=git tool_id=call_8RqlnU7LNWMRwmmFACbIp2ZE
+2026-07-02T21:02:13.611955Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=git success=true
+2026-07-02T21:02:13.612125Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=tree tool_id=call_5eYSgz11vPM4Y53ZOXNWcoHl
+2026-07-02T21:02:13.614634Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=tree success=true
+2026-07-02T21:02:13.614724Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=glob tool_id=call_5TCtO3W8fT0Nhh9GQCBViLr1
+2026-07-02T21:02:13.620734Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=glob success=true
+2026-07-02T21:02:13.620823Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=2
+2026-07-02T21:02:13.623644Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=8 has_tools=true
+2026-07-02T21:02:15.483529Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:02:15.483958Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:02:15.498353Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:02:15.517289Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:02:15.518184Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:02:15.518458Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:02:15.522600Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:02:18.626447Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:02:44.200065Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=30578 ttft_ms=413 input_tokens=14698 output_tokens=794 tps="26.0"
+2026-07-02T21:02:44.200803Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=2 num_tools=3 total_tool_calls=6
+2026-07-02T21:02:44.200833Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=tree tool_id=call_0LZBUhMGiDF1k4RqFTdvciOJ
+2026-07-02T21:02:44.202732Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=tree success=true
+2026-07-02T21:02:44.202875Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=grep tool_id=call_OWCxva8uFgOr9nBgq5E6NSQZ
+2026-07-02T21:02:44.207117Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=grep success=true
+2026-07-02T21:02:44.207287Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=bash tool_id=call_U2YRBz7oxKEcnUVFOcYQOhWI
+2026-07-02T21:02:44.254993Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=bash success=true
+2026-07-02T21:02:44.255177Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=3
+2026-07-02T21:02:44.257879Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=15 has_tools=true
+2026-07-02T21:02:55.179667Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=10923 ttft_ms=342 input_tokens=17148 output_tokens=175 tps="16.0"
+2026-07-02T21:02:55.181701Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=3 num_tools=3 total_tool_calls=9
+2026-07-02T21:02:55.183560Z  INFO codetether_agent::session::helper::tool_modules::tool_parallel::record: Executing read-only tool batch in parallel count=3
+2026-07-02T21:02:55.185610Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=read success=true
+2026-07-02T21:02:55.185677Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=read success=true
+2026-07-02T21:02:55.186217Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=read success=true
+2026-07-02T21:02:55.186549Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=4
+2026-07-02T21:02:55.190393Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=22 has_tools=true
+2026-07-02T21:03:06.130646Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=10942 ttft_ms=378 input_tokens=19484 output_tokens=244 tps="22.3"
+2026-07-02T21:03:06.132253Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=4 num_tools=3 total_tool_calls=12
+2026-07-02T21:03:06.132294Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=read tool_id=call_WorFWUOIx5TkkBd6lN2sH94t
+2026-07-02T21:03:06.135661Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=read success=true
+2026-07-02T21:03:06.135809Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=grep tool_id=call_eoeazSkE9xiGSlQc8Ctc4UAk
+2026-07-02T21:03:06.170882Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=grep success=true
+2026-07-02T21:03:06.171130Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=kubernetes tool_id=call_gnbLZvhnKIzr9lLLKStzqrcK
+2026-07-02T21:03:06.178061Z  INFO codetether_agent::k8s: K8s client initialized (kubeconfig) namespace=default
+2026-07-02T21:03:06.193703Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=kubernetes success=true
+2026-07-02T21:03:06.193960Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=5
+2026-07-02T21:03:06.198147Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=29 has_tools=true
+2026-07-02T21:03:21.442238Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:03:21.444208Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:03:21.444416Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:03:21.445252Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:03:21.445265Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:03:26.473481Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:03:26.482852Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:03:29.301477Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=23105 ttft_ms=369 input_tokens=22072 output_tokens=582 tps="25.2"
+2026-07-02T21:03:29.302236Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=5 num_tools=1 total_tool_calls=13
+2026-07-02T21:03:29.302253Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=multiedit tool_id=call_JjAK5pLWIiHSopG7nNR6msCh
+2026-07-02T21:03:29.304429Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=multiedit success=true
+2026-07-02T21:03:29.304604Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=6
+2026-07-02T21:03:29.308029Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=32 has_tools=true
+2026-07-02T21:03:36.754118Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=7448 ttft_ms=412 input_tokens=22732 output_tokens=151 tps="20.3"
+2026-07-02T21:03:36.754815Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=6 num_tools=3 total_tool_calls=16
+2026-07-02T21:03:36.754827Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=git tool_id=call_NfghC9nO4zPb9NqR6fLYonKN
+2026-07-02T21:03:36.759671Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=git success=true
+2026-07-02T21:03:36.759754Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=fileinfo tool_id=call_yVVGmLluDchi4eERgezCmJAo
+2026-07-02T21:03:36.761881Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=fileinfo success=true
+2026-07-02T21:03:36.761959Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=kubernetes tool_id=call_F1J7wrsXEV5S5mjtCmjwCycN
+2026-07-02T21:03:36.767885Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=kubernetes success=true
+2026-07-02T21:03:36.767976Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=7
+2026-07-02T21:03:36.769528Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=39 has_tools=true
+2026-07-02T21:03:50.704877Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=13936 ttft_ms=537 input_tokens=2151 output_tokens=319 tps="22.9"
+2026-07-02T21:03:50.705861Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=7 num_tools=1 total_tool_calls=17
+2026-07-02T21:03:50.705880Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=bash tool_id=call_kPeZm0zm5o2QwmUbPpqP5k6x
+2026-07-02T21:04:05.704308Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:04:05.708754Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:04:05.709117Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:04:05.709376Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:04:05.709449Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:04:05.711887Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:04:05.713136Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:04:15.231531Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=bash success=true
+2026-07-02T21:04:15.231967Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=8
+2026-07-02T21:04:15.240388Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=42 has_tools=true
+2026-07-02T21:04:17.625046Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T21:04:17.625118Z  INFO codetether_agent::a2a::spawn: Discovered A2A peer agent=ubuntu-dev-cluster-ci-cache-bb49 peer_name=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f peer_url=http://192.168.50.112:51804 endpoint=http://192.168.50.112:51804 via="mdns"
+2026-07-02T21:04:25.433570Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=10197 ttft_ms=389 input_tokens=1152 output_tokens=230 tps="22.6"
+2026-07-02T21:04:25.435054Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=8 num_tools=3 total_tool_calls=20
+2026-07-02T21:04:25.435080Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=bash tool_id=call_m0zhV43EMFDmqwIl6mg5SsnX
+2026-07-02T21:04:25.530953Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.540694Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=bash success=false
+2026-07-02T21:04:25.541275Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.541360Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=bash tool_id=call_zwBwRa5YThRTDvUOZJwONLPF
+2026-07-02T21:04:25.541490Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.541574Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.541642Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.542674Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.542862Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.543461Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.543557Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.547058Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-ci-images-6092
+2026-07-02T21:04:25.627091Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=bash success=false
+2026-07-02T21:04:25.627359Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=kubernetes tool_id=call_fMtjPuRZrWsbiFHctsqTSS3c
+2026-07-02T21:04:25.635918Z  WARN codetether_agent::session::helper::tool_modules::tool_exec: Tool execution failed tool=kubernetes error=Pod for sub-agent 'ci-cache-website-79674759fc-xd72l' not found
+2026-07-02T21:04:25.636223Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=9
+2026-07-02T21:04:25.640207Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=49 has_tools=true
+2026-07-02T21:04:27.675279Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T21:04:45.115140Z  INFO codetether_agent::provider::metrics: Provider streaming request completed provider=openai-codex model=gpt-5.5 latency_ms=19477 ttft_ms=422 input_tokens=10802 output_tokens=478 tps="24.5"
+2026-07-02T21:04:45.115906Z  INFO codetether_agent::session::helper::prompt_events: Executing tool calls step=9 num_tools=3 total_tool_calls=23
+2026-07-02T21:04:45.115925Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=bash tool_id=call_cDZiOjq50kcpPcK3vxn85wkB
+2026-07-02T21:04:45.512903Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:45.515022Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:45.535955Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:45.536207Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:45.536240Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:45.538413Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:45.538423Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:45.539023Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=rileys-laptop-hardware-42d0
+2026-07-02T21:04:50.240818Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=bash success=true
+2026-07-02T21:04:50.241093Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=bash tool_id=call_NgDAS9iLF5qdQIiEQnfEcbha
+2026-07-02T21:04:50.415344Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=bash success=true
+2026-07-02T21:04:50.415561Z  INFO codetether_agent::session::helper::prompt_events: Executing tool tool=git tool_id=call_eMcfp4D6u7RMXi6mdfz2KWv4
+2026-07-02T21:04:50.419244Z  INFO codetether_agent::session::helper::tool_modules::tool_exec: Tool execution completed tool=git success=true
+2026-07-02T21:04:50.419434Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=10
+2026-07-02T21:04:50.422102Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=56 has_tools=true
+2026-07-02T21:05:08.263593Z  INFO codetether_agent::tui::app::session_sync: refresh_sessions: starting cwd=/home/riley/cluster-ci-cache
+2026-07-02T21:05:08.263620Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: starting dir=/home/riley/cluster-ci-cache
+2026-07-02T21:05:08.263945Z  WARN codetether_agent::session::listing::parse: skipping malformed session file path=/home/riley/cluster-ci-cache/.codetether-agent/sessions/.workspace_index.json error=missing field `id` at line 1 column 83
+2026-07-02T21:05:08.264282Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: native sessions native_count=1
+2026-07-02T21:05:08.276655Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: codex sessions codex_count=0
+2026-07-02T21:05:08.276683Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: done total=1
+2026-07-02T21:05:08.276686Z  INFO codetether_agent::tui::app::session_sync: refresh_sessions: loaded sessions count=1
+2026-07-02T21:05:14.859051Z  INFO codetether_agent::session::helper::prompt_events: Available providers: ["glm5", "minimax-credits", "lmstudio", "minimax", "vertex-anthropic", "openrouter", "vertex-glm", "cerebras", "moltbook", "qwen-fast", "deepseek", "chat-sync-minio", "openai-codex", "moonshotai", "qwen-heavy", "novita", "stepfun", "google", "zai", "gemini-web", "bedrock", "github-copilot"]
+2026-07-02T21:05:14.886528Z  INFO codetether_agent::session::helper::prompt_events: Using model: gpt-5.5 via provider: openai-codex
+2026-07-02T21:05:14.886555Z  INFO codetether_agent::session::helper::prompt_events: Available tools: 65
+2026-07-02T21:05:14.892523Z  INFO codetether_agent::session::helper::prompt_events: Agent step starting step=1
+2026-07-02T21:05:14.894655Z  INFO codetether_agent::provider::openai_codex: Sending responses websocket request backend="chatgpt-codex-responses-ws" instructions_len=7067 input_items=57 has_tools=true
+2026-07-02T21:05:15.585630Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:15.585856Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:15.585937Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:15.586018Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:15.586083Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:15.654480Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:15.657493Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:15.657967Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=ubuntu-dev-spotlessbinco-8024
+2026-07-02T21:05:18.512132Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
+2026-07-02T21:05:22.966469Z  INFO codetether_agent::tui::app::session_sync: refresh_sessions: starting cwd=/home/riley/cluster-ci-cache
+2026-07-02T21:05:22.966487Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: starting dir=/home/riley/cluster-ci-cache
+2026-07-02T21:05:22.966765Z  WARN codetether_agent::session::listing::parse: skipping malformed session file path=/home/riley/cluster-ci-cache/.codetether-agent/sessions/.workspace_index.json error=missing field `id` at line 1 column 83
+2026-07-02T21:05:22.967041Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: native sessions native_count=1
+2026-07-02T21:05:22.979086Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: codex sessions codex_count=0
+2026-07-02T21:05:22.979113Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: done total=1
+2026-07-02T21:05:22.979118Z  INFO codetether_agent::tui::app::session_sync: refresh_sessions: loaded sessions count=1
+2026-07-02T21:05:24.595907Z  INFO codetether_agent::tui::app::session_sync: refresh_sessions: starting cwd=/home/riley/cluster-ci-cache
+2026-07-02T21:05:24.595942Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: starting dir=/home/riley/cluster-ci-cache
+2026-07-02T21:05:24.596316Z  WARN codetether_agent::session::listing::parse: skipping malformed session file path=/home/riley/cluster-ci-cache/.codetether-agent/sessions/.workspace_index.json error=missing field `id` at line 1 column 83
+2026-07-02T21:05:24.596601Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: native sessions native_count=1
+2026-07-02T21:05:24.609096Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: codex sessions codex_count=0
+2026-07-02T21:05:24.609122Z  INFO codetether_agent::session::listing_all: list_all_sessions_for_directory: done total=1
+2026-07-02T21:05:24.609124Z  INFO codetether_agent::tui::app::session_sync: refresh_sessions: loaded sessions count=1
+2026-07-02T21:05:28.496345Z  INFO codetether_agent::bus::registry: Agent registered on bus agent_id=fcoh2j-r2v9hwd2-aigov-core-keycloak-terraform-ea5f
