@@ -11,7 +11,7 @@ fn features() {
         feat("concurrency", "Concurrency-safe", "Atomic manifest publishing via temp-file-and-rename. Save sessions prevent partial manifests. Idempotent blob storage. No distributed locks required for correctness.") +
         "</div>" +
         "<div class='hero-screenshot' style='margin-top:32px'>" +
-        "<img src='http://192.168.50.223:9000/cluster-ci-cache/security.png' alt='Archive hardening — path traversal protection, bomb prevention, and digest verification' loading='lazy'>" +
+        "<img src='https://imgcache.quantum-forge.net/cluster-ci-cache/security.png' alt='Archive hardening — path traversal protection, bomb prevention, and digest verification' loading='lazy'>" +
         "</div>" +
         "</section>"
 }

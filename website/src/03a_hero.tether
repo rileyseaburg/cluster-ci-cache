@@ -13,7 +13,7 @@ fn hero(version, release_url) {
         "<a href='#quickstart' class='btn btn-ghost'>Documentation</a>" +
         "</div>" +
         "<div class='hero-screenshot'>" +
-        "<img src='http://192.168.50.223:9000/cluster-ci-cache/hero.png' alt='Cluster CI Cache architecture diagram' loading='lazy'>" +
+        "<img src='https://imgcache.quantum-forge.net/cluster-ci-cache/hero.png' alt='Cluster CI Cache architecture diagram' loading='lazy'>" +
         "</div>" +
         "</header>"
 }
