@@ -8,7 +8,10 @@ metadata:
     app.kubernetes.io/name: cluster-ci-cache
     app.kubernetes.io/component: server
 spec:
-  replicas: 2
+  # S3/MinIO owns manifests and blobs, so the server remains stateless.
+  replicas: 1
+  strategy:
+    type: RollingUpdate
   selector:
     matchLabels:
       app.kubernetes.io/name: cluster-ci-cache
@@ -26,7 +29,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: server
-          image: registry.quantum-forge.net/cluster-ci-cache/ci-cache:latest
+          image: registry.quantum-forge.net/cluster-ci-cache/ci-cache@sha256:8eb50ba657fcaebd01a0bb9a7f572238ea76fde14c1c625537f354c1d226be8f
           imagePullPolicy: Always
           ports:
             - name: http
@@ -34,14 +37,27 @@ spec:
           env:
             - name: CI_CACHE_CONFIG
               value: /etc/ci-cache/config.yaml
+            - name: CI_CACHE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ci-cache-auth
+                  key: token
+            - name: CI_CACHE_S3_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ci-cache-s3-creds
+                  key: access-key
+            - name: CI_CACHE_S3_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: ci-cache-s3-creds
+                  key: secret-key
             - name: RUST_LOG
               value: "info,ci_cache_server=debug"
           volumeMounts:
             - name: config
               mountPath: /etc/ci-cache
               readOnly: true
-            - name: data
-              mountPath: /var/lib/ci-cache
           livenessProbe:
             httpGet:
               path: /healthz
@@ -57,16 +73,17 @@ spec:
           resources:
             requests:
               cpu: 100m
-              memory: 128Mi
+              memory: 256Mi
             limits:
-              cpu: 500m
-              memory: 512Mi
+              cpu: "2"
+              # v0.1.0 buffers one bounded cache shard per request. pnpm's
+              # two-hex shards remain below max_body_bytes, but need headroom
+              # beyond the compressed request body while hashing/storing it.
+              memory: 2Gi
       volumes:
         - name: config
           configMap:
             name: ci-cache-config
-        - name: data
-          emptyDir: {}
 ---
 # ci-cache-server Service
 apiVersion: v1
@@ -86,3 +103,27 @@ spec:
       port: 8080
       targetPort: http
       protocol: TCP
+---
+# Private LAN ingress for VM/LXC runners that cannot resolve cluster DNS.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ci-cache-server-lan
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    nginx.ingress.kubernetes.io/proxy-buffering: "off"
+    nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /ci-cache(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ci-cache-server
+                port:
+                  name: http

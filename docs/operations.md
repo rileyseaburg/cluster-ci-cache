@@ -121,6 +121,27 @@ kubectl -n forgejo-actions exec deploy/forgejo-act-runner-dind -c runner -- \
 The expected response is `ok`. Workflows should fail fast on `ci-cache health`
 instead of silently falling back to slow uncached builds.
 
+### VM and LXC runner access
+
+Kubernetes service names such as `*.svc.cluster.local` resolve only inside the
+cluster. VM and LXC runners on the private LAN use the NGINX ingress address
+directly instead:
+
+```bash
+export CI_CACHE_SERVER=http://192.168.50.82/ci-cache
+ci-cache health
+```
+
+This address stays on the local network and does not traverse public DNS or
+Cloudflare. The ingress rewrites `/ci-cache/...` to the server's root API and
+disables request/response buffering so large cache blobs stream normally.
+Bearer-token authentication is still required for cache operations.
+
+The server NetworkPolicy must permit the `ingress-nginx` controller pods. A
+workflow that can run in either environment should probe cluster DNS with a
+short timeout, prefer the ClusterIP when it resolves, and otherwise select the
+private LAN ingress.
+
 ## Retention
 
 - TTLs are set per-manifest (default 7 days)

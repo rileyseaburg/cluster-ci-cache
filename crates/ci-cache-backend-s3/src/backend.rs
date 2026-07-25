@@ -87,11 +87,7 @@ impl S3Backend {
         };
         let host_header = format!("{host}{port_suffix}");
 
-        let canonical_uri = if self.path_style {
-            format!("/{}/{}", self.bucket, parsed.path().trim_start_matches('/'))
-        } else {
-            parsed.path().to_string()
-        };
+        let canonical_uri = parsed.path().to_string();
         let canonical_query = signing::canonical_query_string(parsed.query_pairs());
         let signed_headers = "host;x-amz-content-sha256;x-amz-date";
         let canonical_headers = format!(

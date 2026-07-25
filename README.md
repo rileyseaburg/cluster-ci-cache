@@ -21,14 +21,14 @@ Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/Bui
   <a href="#"><img src="https://img.shields.io/badge/arch-linux%2Famd64-informational?style=flat-square" alt="Architecture"></a>
   <a href="#"><img src="https://img.shields.io/badge/layers-7-lightgrey?style=flat-square" alt="Layers"></a>
   <a href="#"><img src="https://img.shields.io/badge/pulls-6-yellow?style=flat-square" alt="Pulls"></a>
-  <a href="#"><img src="https://img.shields.io/badge/digest-sha256%3A82808a-orange?style=flat-square" alt="Digest"></a>
+  <a href="#"><img src="https://img.shields.io/badge/digest-sha256%3A8eb50b-orange?style=flat-square" alt="Digest"></a>
   <br>
   <!-- Deployment Status -->
   <a href="#"><img src="https://img.shields.io/badge/Deployment-LIVE%20on%20Cluster-brightgreen?style=for-the-badge" alt="Deployment Status"></a>
   <br>
-  <a href="#"><img src="https://img.shields.io/badge/Server-2%20replicas%20Running-success?style=flat-square" alt="Server Status"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Agents-6%20DaemonSet%20pods-success?style=flat-square" alt="Agent Status"></a>
-  <a href="#"><img src="https://img.shields.io/badge/Cluster-7%20nodes-blueviolet?style=flat-square" alt="Cluster"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Server-1%20replica%20Running-success?style=flat-square" alt="Server Status"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Agents-10%20DaemonSet%20pods-success?style=flat-square" alt="Agent Status"></a>
+  <a href="#"><img src="https://img.shields.io/badge/Cluster-11%20nodes-blueviolet?style=flat-square" alt="Cluster"></a>
   <a href="#"><img src="https://img.shields.io/badge/Namespace-ci--cache-blue?style=flat-square" alt="Namespace"></a>
   <a href="#"><img src="https://img.shields.io/badge/E2E%20Verified-✅%20pass-critical?style=flat-square" alt="E2E"></a>
   <br>
@@ -46,6 +46,7 @@ Fast, secure, deduplicated build caching for Rust, npm/pnpm/yarn, and Docker/Bui
 | Section | Description |
 |---------|-------------|
 | [What is This?](#-what-is-this) | Problem & solution overview |
+| [Measured Results](#-measured-results) | Live counters and end-to-end timings |
 | [Why This Works](#-why-this-works) | Design principles |
 | [Architecture](#-architecture) | System diagram & components |
 | [Data Flow Diagrams](#-data-flow-diagrams) | Save & restore sequences |
@@ -84,6 +85,60 @@ PVC, MinIO, or AWS S3.
   → cargo build with warm cache (12s)
   Total: 20 seconds per build
 ```
+
+---
+
+## 📈 Measured Results
+
+These are observed results from the live SpotlessBinCo deployment on
+2026-07-25. The server used the private MinIO bucket
+`cluster-ci-build-cache`; local, VM/LXC, and Kubernetes clients used the same
+cache namespace and blobs.
+
+### Live server counters
+
+Snapshot after 96 minutes of uptime:
+
+| Metric | Observed value |
+|--------|----------------|
+| Restore requests | 16 |
+| Cache hits / misses | 11 / 5 (68.75% hit rate) |
+| Save requests | 12 |
+| Bytes uploaded | 2,405,871,407 (2.3 GiB) |
+| Bytes downloaded | 9,536,119,057 (8.9 GiB) |
+| Blob dedup hits | 517 |
+| Backend errors | 0 |
+
+### Real cache operations
+
+| Workload | Result | Wall time |
+|----------|--------|-----------|
+| 18,420,207-byte generic artifact, cold save | 16.12 MB compressed | 729 ms |
+| Same generic artifact, clean restore | Matching SHA-256 | 613 ms |
+| Same generic artifact, duplicate save | 16.12 MB deduplicated | 119 ms |
+| pnpm store, cold save | 512 blobs, 1.26 GB | 139.20 s |
+| pnpm store, clean local restore | 205,063 files, 1.26 GB | 57.14 s |
+| pnpm store, Forgejo Kubernetes restore | Authenticated ClusterIP | 48 s |
+| pnpm store, Forgejo VM restore | Authenticated LAN ingress | 62 s |
+| Checked API/UI output restore | 7,566 files, 170.25 MB | 5.69 s |
+| Checked API/UI output, Forgejo Kubernetes restore | Build skipped | 4 s |
+| Checked API/UI duplicate-key save | 0 B uploaded, 170.25 MB deduplicated | 16.73 s |
+
+The duplicate saves are metadata operations: content-addressed blobs already in
+MinIO are reused instead of uploaded again.
+
+### End-to-end PR pipeline
+
+| Run | Elapsed time | Result |
+|-----|--------------|--------|
+| Uncached baseline | 25 min 50 s | Reference run before the shared caches |
+| Warm shared-cache run | 7 min 8 s | Success; dependencies and checked API/UI outputs restored |
+
+The warm run reduced elapsed time by 72.4% and delivered 3.62x baseline
+throughput. The checked API/UI restore took 4 seconds, so its build was skipped;
+the Rust build was also correctly skipped for the API-only change. API
+integration tests still ran from scratch and passed in 2 minutes 11 seconds.
+These measurements are from Forgejo Actions run `4374` on 2026-07-25.
 
 ---
 
@@ -143,7 +198,7 @@ symlink skipping, and decompression bomb protection.
  │   │  (CLI)      │               │      ▼                       │
  │   └─────────────┘               │  ┌──────────────────────┐    │
  │                                 └──│  ci-cache-server     │    │
- │                                    │  (2x replicas)       │    │
+ │                                    │  (1x replica)        │    │
  │                                    │                      │    │
  │                                    │  • Manifest mgmt     │    │
  │                                    │  • Blob dedup        │    │
@@ -173,7 +228,7 @@ symlink skipping, and decompression bomb protection.
 
 | Component | Type | Role |
 |-----------|------|------|
-| `ci-cache-server` | Deployment (2x) | Central HTTP API, manifest/blob management |
+| `ci-cache-server` | Deployment (1x) | Central HTTP API, manifest/blob management |
 | `ci-cache-cli` | Binary (in CI pods) | Client for restore/save operations |
 | `ci-cache-agent` | DaemonSet | Node-local cache, health/status endpoint |
 
@@ -241,7 +296,7 @@ CI Job                    ci-cache-server              Backend
 ### 1. Deploy to Kubernetes
 
 ```bash
-git clone https://github.com/spotlessbinco/cluster-ci-cache.git
+git clone https://github.com/rileyseaburg/cluster-ci-cache.git
 cd cluster-ci-cache
 
 # Deploy with kustomize (uses filesystem/PVC backend)
@@ -257,7 +312,6 @@ helm install cluster-ci-cache deploy/helm/cluster-ci-cache
 kubectl get pods -n ci-cache
 # NAME                               READY   STATUS    AGE
 # ci-cache-server-xxx-aaa            1/1     Running   30s
-# ci-cache-server-xxx-bbb            1/1     Running   30s
 # ci-cache-agent-xxx                 1/1     Running   30s  (one per node)
 ```
 

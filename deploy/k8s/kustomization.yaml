@@ -6,7 +6,7 @@ metadata:
 labels:
   - pairs:
       app.kubernetes.io/name: cluster-ci-cache
-    includeSelectors: true
+    includeSelectors: false
 resources:
   - config.yaml
   - rbac.yaml
