@@ -12,10 +12,10 @@ data:
       listen_addr: "0.0.0.0:8080"
       max_body_bytes: 536870912   # 512 MiB
     backend:
-      kind: "local"
+      kind: "s3"
       fs_root: "/var/lib/ci-cache"
-      bucket: "cluster-ci-cache"
-      endpoint: "http://minio.minio.svc.cluster.local:9000"
+      bucket: "cluster-ci-build-cache"
+      endpoint: "http://192.168.50.223:9000"
       region: "us-east-1"
       access_key_env: "CI_CACHE_S3_ACCESS_KEY"
       secret_key_env: "CI_CACHE_S3_SECRET_KEY"
@@ -27,23 +27,8 @@ data:
       max_archive_size_gb: 10
       dedupe: true
     auth:
-      mode: "serviceaccount"
+      mode: "token"
       token_env: "CI_CACHE_AUTH_TOKEN"
----
-# Secret for S3/MinIO credentials (base64-encoded)
-# Create with: kubectl create secret generic ci-cache-s3-creds \
-#   --from-literal=access-key=YOUR_ACCESS_KEY \
-#   --from-literal=secret-key=YOUR_SECRET_KEY
-apiVersion: v1
-kind: Secret
-metadata:
-  name: ci-cache-s3-creds
-  labels:
-    app.kubernetes.io/name: cluster-ci-cache
-type: Opaque
-data:
-  access-key: ""
-  secret-key: ""
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -79,6 +64,28 @@ spec:
             matchLabels:
               app.kubernetes.io/name: cluster-ci-cache
               app.kubernetes.io/component: agent
+        # Forgejo job containers use the cache directly from their runner pod.
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: forgejo-actions
+          podSelector:
+            matchLabels:
+              app: forgejo-act-runner-dind
+        # GitHub ARC runners for SpotlessBinCo share the same lockfile caches.
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: arc-runners
+          podSelector:
+            matchLabels:
+              actions.github.com/scale-set-name: spotlessbinco-k8s
+        # The LAN ingress bypasses public DNS and Cloudflare for VM/LXC runners.
+        - namespaceSelector:
+            matchLabels:
+              kubernetes.io/metadata.name: ingress-nginx
+          podSelector:
+            matchLabels:
+              app.kubernetes.io/component: controller
+              app.kubernetes.io/instance: ingress-nginx
       ports:
         - protocol: TCP
           port: 8080
