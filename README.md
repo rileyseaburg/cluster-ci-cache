@@ -121,12 +121,13 @@ Snapshot after 96 minutes of uptime:
 | pnpm store, clean local restore | 205,063 files, 1.26 GB | 57.14 s |
 | pnpm store, Forgejo Kubernetes restore | Authenticated ClusterIP | 48 s |
 | pnpm store, Forgejo VM restore | Authenticated LAN ingress | 62 s |
-| pnpm store, current shared key | 115,504 files, 614.40 MB; zero package downloads | 40.36 s |
+| pnpm store, current shared key | 115,504 files, 614.39 MB; zero package downloads | 29.43 s |
 | Local dependency materialization after restore | 2,782 packages reused; zero downloads | 6.5 s |
 | Checked API/UI output restore | 7,566 files, 170.25 MB | 5.69 s |
 | Checked API/UI output, Forgejo Kubernetes restore | Build skipped | 4 s |
 | Checked API/UI duplicate-key save | 0 B uploaded, 170.25 MB deduplicated | 16.73 s |
 | Checked API/UI output, clean local restore | 4,811 files, 85.11 MB | 3.30 s |
+| Checked API/UI current shared key, Forgejo restore | 4,693 files, 99.07 MB; build skipped | 2.33 s |
 | Checked API/UI output, first local save | 85.11 MB uploaded | Cold publish |
 
 The duplicate saves are metadata operations: content-addressed blobs already in
@@ -139,18 +140,20 @@ MinIO are reused instead of uploaded again.
 | Uncached baseline | 25 min 50 s | Reference run before the shared caches |
 | Warm shared-cache run | 7 min 8 s | Success; dependencies and checked API/UI outputs restored |
 | Hardened isolated run `4483` (`4368` in Forgejo) | 6 min 35 s | Success; fresh integration tests, no Rust/image/deploy work |
+| Protected integration run `4513` (`4398` in Forgejo) | 5 min 30 s | Success; warm dependencies and outputs, 50 fresh tests |
 
-The latest run reduced elapsed time by 74.5% and delivered 3.92x baseline
-throughput. It retained the deliberately uncached work: API integration passed
-in 1 minute 57 seconds and video workflow demos ran in 34 seconds. All Rust,
-Docker, registry, image-push, and deployment steps were skipped.
+The hardened PR run reduced elapsed time by 74.5% and delivered 3.92x baseline
+throughput. The current protected integration run also improved from 7 minutes
+51 seconds to 5 minutes 30 seconds, a 29.9% reduction, while all 50 integration
+tests still ran fresh in 2.8 minutes. Rust, Docker, registry, image-push, and
+deployment work remained skipped.
 
-That 6-minute-35-second run used a cold checked-output key and spent 2 minutes
-10 seconds building API/UI assets once. On an exact warm key, Cluster CI Cache
-replaces that reusable build with a 3.30–5.69-second MinIO restore while the
-integration suites still run fresh. An earlier warm Forgejo run restored the
-checked outputs in 4 seconds and completed in 7 minutes 8 seconds (run `4374`,
-2026-07-25).
+Run `4513` is the direct warm-key measurement: Cluster CI Cache replaced the
+previous 2-minute-34-second API/UI build with a 2.33-second MinIO restore,
+roughly 66x faster for that reusable stage. The workflow also skipped the
+redundant pnpm upload, artifact staging, and artifact upload. Only dependency
+materialization, schema verification, SDK compilation, and integration tests
+remained uncached.
 
 These figures measure complete operations, not synthetic bandwidth: the CLI
 reports restored file and byte counts plus uploaded and deduplicated bytes, and
