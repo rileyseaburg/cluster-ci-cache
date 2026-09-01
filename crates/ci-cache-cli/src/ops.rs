@@ -1,7 +1,7 @@
 //! CLI restore/save operations.
 
-use ci_cache_core::archive_ops::extract_archive;
 use ci_cache_core::archive::create_archive_from_dir;
+use ci_cache_core::archive_ops::extract_archive;
 use ci_cache_core::compression::Compression;
 use ci_cache_core::digest::{compute_digest, digest_hex};
 use ci_cache_core::manifest::{BlobRef, CachedPath};
@@ -22,7 +22,7 @@ pub async fn restore(
     namespace: &str,
     cache_type: ci_cache_core::CacheType,
     key: &str,
-    path_specs: &[String],
+    _path_specs: &[String],
     max_decompress: u64,
 ) -> anyhow::Result<RestoreResult> {
     let resp = client.restore(namespace, cache_type, key).await?;
@@ -119,9 +119,10 @@ pub async fn save(
     compression: Compression,
     max_archive: u64,
     ttl_seconds: Option<u64>,
+    metadata: std::collections::HashMap<String, String>,
 ) -> anyhow::Result<SaveResult> {
     let session_id = client
-        .save_start(namespace, cache_type, key, ttl_seconds, Default::default())
+        .save_start(namespace, cache_type, key, ttl_seconds, metadata)
         .await?;
 
     tracing::info!(session_id = %session_id, "save session started");
@@ -144,8 +145,7 @@ pub async fn save(
 
         tracing::info!(path = ?resolved, "archiving");
 
-        let (compressed, header) =
-            create_archive_from_dir(&resolved, compression, max_archive)?;
+        let (compressed, header) = create_archive_from_dir(&resolved, compression, max_archive)?;
 
         let uncompressed_size = header.total_size;
         let digest = compute_digest(&compressed);
@@ -171,7 +171,9 @@ pub async fn save(
         #[cfg(unix)]
         let mode = {
             use std::os::unix::fs::PermissionsExt;
-            std::fs::metadata(&resolved).ok().map(|m| m.permissions().mode())
+            std::fs::metadata(&resolved)
+                .ok()
+                .map(|m| m.permissions().mode())
         };
         #[cfg(not(unix))]
         let mode = None;

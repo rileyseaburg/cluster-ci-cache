@@ -243,7 +243,7 @@ dependencies = [
 
 [[package]]
 name = "ci-cache-agent"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "axum",
@@ -258,7 +258,7 @@ dependencies = [
 
 [[package]]
 name = "ci-cache-backend-fs"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "bytes",
@@ -274,7 +274,7 @@ dependencies = [
 
 [[package]]
 name = "ci-cache-backend-s3"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "async-trait",
  "bytes",
@@ -294,12 +294,11 @@ dependencies = [
 
 [[package]]
 name = "ci-cache-cli"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "bytes",
  "chrono",
- "ci-cache-backend-fs",
  "ci-cache-core",
  "clap",
  "futures",
@@ -313,7 +312,7 @@ dependencies = [
 
 [[package]]
 name = "ci-cache-core"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "async-trait",
@@ -337,7 +336,7 @@ dependencies = [
 
 [[package]]
 name = "ci-cache-server"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "anyhow",
  "async-trait",

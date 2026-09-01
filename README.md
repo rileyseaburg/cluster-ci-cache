@@ -460,30 +460,102 @@ Commands:
   restore    Restore a cache entry
   save       Save a cache entry
   docker     Docker/BuildKit cache helpers
+  manifest   Print a cache manifest as pretty JSON
+  delete     Delete a cache manifest by key
+  key        Deterministic cache key generators
+  auth       Authentication and CI environment helpers
   health     Check server health
 ```
 
 ### restore
 
 ```bash
-ci-cache restore --cache-type <type> --key <key> --paths <comma,separated,paths>
+ci-cache restore --cache-type <type> --key <key> --paths <comma,separated,paths> \
+  [--max-decompress-size <size>]
 ```
 
 Downloads the manifest, fetches each referenced blob, verifies its sha256
 digest, decompresses with size limits, and extracts to the target paths.
+`--max-decompress-size` defaults to 40 GiB and accepts byte units such as
+`500MB`, `2GiB`, or a raw byte count.
 
 Output: `RESTORED key=... files=N bytes=N` or `MISS key=...`
 
 ### save
 
 ```bash
-ci-cache save --cache-type <type> --key <key> --paths <paths> [--ttl <seconds>]
+ci-cache save --cache-type <type> --key <key> --paths <paths> \
+  [--ttl <seconds>] [--metadata key=value]... [--max-archive-size <size>]
 ```
 
 Archives each path with zstd, computes digests, uploads missing blobs (skipping
 duplicates), and atomically publishes the manifest.
+`--metadata` adds arbitrary key/value data to the manifest. `--max-archive-size`
+defaults to 10 GiB per saved path and accepts byte units such as `500MB`,
+`2GiB`, or a raw byte count.
 
-Output: `SAVED key=... blobs=N uploaded=N deduped=N`
+Output: `SAVED key=... blobs=N uploaded=N deduped=N metadata=N`
+
+### manifest / delete
+
+```bash
+ci-cache manifest --key K   # Print manifest JSON for namespace/key
+ci-cache delete --key K     # Delete manifest for namespace/key
+```
+
+### key
+
+Use built-in key generators instead of committing one-off shell scripts for
+common cache-key recipes.
+
+```bash
+# Replacement for scripts that hash Fastify/API and UI build inputs.
+KEY=$(ci-cache key api-ui-assets --repo-root . --revision HEAD)
+
+# Generic tracked-tree key generator for new recipes.
+KEY=$(ci-cache key git-tree \
+  --prefix api-ui-assets-v5 \
+  --include .npmrc \
+  --include api \
+  --include package.json \
+  --include pnpm-lock.yaml \
+  --exclude api/dist \
+  --exclude-prefix api/dist/ \
+  --exclude-prefix api/docs/)
+```
+
+`key api-ui-assets` emits:
+
+```text
+api-ui-assets-v5-<os>-<arch>-<git-tree-digest>
+```
+
+The digest is computed from tracked `git ls-tree` entries at the requested
+revision after excluding generated API output, docs, Helm/K8s manifests,
+debug files, and API test/spec/Markdown files.
+
+### auth
+
+Use built-in auth helpers instead of committing scripts that manually call
+Vault or `kubectl` and export tokens.
+
+```bash
+# Print the token from CI_CACHE_TOKEN, Vault, or a Kubernetes Secret.
+ci-cache auth token \
+  --vault-path kv/forgejo/spotlessbinco-ci-secrets \
+  --kube-namespace ci-cache \
+  --kube-secret ci-cache-auth
+
+# Print shell exports for CI jobs.
+eval "$(ci-cache auth env \
+  --server http://192.168.50.82/ci-cache \
+  --namespace spotlessbinco-trusted-v5 \
+  --vault-path kv/forgejo/spotlessbinco-ci-secrets)"
+```
+
+Token discovery order is: explicit `--token`/`CI_CACHE_TOKEN`, optional Vault KV
+path, then Kubernetes Secret. The CLI only prints token material when explicitly
+using `auth token` or `auth env`.
 
 ### docker
 
@@ -491,7 +563,20 @@ Output: `SAVED key=... blobs=N uploaded=N deduped=N`
 ci-cache docker login-cache          # Print BuildKit cache setup guide
 ci-cache docker cache-from --key K   # Print --cache-from flag
 ci-cache docker cache-to --key K     # Print --cache-to flag
+
+# Print only the BuildKit value, suitable for --cache-from="$ref" arrays.
+ci-cache docker cache-ref cache-from --key K
+
+# Print ready-to-pass buildx flags, optionally verifying import caches exist.
+ci-cache docker buildkit-flags \
+  --from main-cache-key \
+  --from branch-cache-key \
+  --to branch-cache-key \
+  --verify-importers
 ```
+
+`buildkit-flags` replaces helper scripts that shell out to `ci-cache`, strip
+flag names with `sed`, inspect cache images manually, and append `API_CACHE_FLAGS`.
 
 ---
 

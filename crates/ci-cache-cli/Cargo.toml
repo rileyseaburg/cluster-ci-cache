@@ -10,8 +10,7 @@ name = "ci-cache"
 path = "src/main.rs"
 
 [dependencies]
-ci-cache-core = { workspace = true }
-ci-cache-backend-fs = { workspace = true }
+ci-cache-core = { path = "../ci-cache-core", version = "0.1.1" }
 tokio = { workspace = true }
 clap = { workspace = true }
 reqwest = { workspace = true }

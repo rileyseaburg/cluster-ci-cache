@@ -66,18 +66,16 @@ impl CacheClient {
         ttl_seconds: Option<u64>,
         metadata: std::collections::HashMap<String, String>,
     ) -> anyhow::Result<String> {
-        let resp = self
-            .add_auth(
-                self.http
-                    .post(self.url("/v1/cache/save/start"))
-                    .json(&SaveStartRequest {
-                        namespace: namespace.to_string(),
-                        cache_type,
-                        key: key.to_string(),
-                        ttl_seconds,
-                        metadata,
-                    }),
-            )
+        let resp =
+            self.add_auth(self.http.post(self.url("/v1/cache/save/start")).json(
+                &SaveStartRequest {
+                    namespace: namespace.to_string(),
+                    cache_type,
+                    key: key.to_string(),
+                    ttl_seconds,
+                    metadata,
+                },
+            ))
             .send()
             .await?;
         if !resp.status().is_success() {
@@ -115,21 +113,43 @@ impl CacheClient {
         Ok(resp.json().await?)
     }
 
-    pub async fn has_blobs(
-        &self,
-        digests: &[String],
-    ) -> anyhow::Result<BatchHasBlobsResponse> {
-        let resp = self
-            .add_auth(
-                self.http
-                    .post(self.url("/v1/cache/has-blobs"))
-                    .json(&BatchHasBlobsRequest {
-                        digests: digests.to_vec(),
-                    }),
-            )
+    #[allow(dead_code)]
+    pub async fn has_blobs(&self, digests: &[String]) -> anyhow::Result<BatchHasBlobsResponse> {
+        let resp =
+            self.add_auth(self.http.post(self.url("/v1/cache/has-blobs")).json(
+                &BatchHasBlobsRequest {
+                    digests: digests.to_vec(),
+                },
+            ))
             .send()
             .await?;
         Ok(resp.json().await?)
+    }
+
+    pub async fn get_manifest(
+        &self,
+        namespace: &str,
+        key: &str,
+    ) -> anyhow::Result<ci_cache_core::manifest::CacheManifest> {
+        let url = self.url(&format!("/v1/cache/manifest/{}/{}", namespace, key));
+        let resp = self.add_auth(self.http.get(url)).send().await?;
+        if !resp.status().is_success() {
+            let status = resp.status();
+            let text = resp.text().await.unwrap_or_default();
+            anyhow::bail!("get manifest failed: HTTP {status}: {text}");
+        }
+        Ok(resp.json().await?)
+    }
+
+    pub async fn delete_manifest(&self, namespace: &str, key: &str) -> anyhow::Result<()> {
+        let url = self.url(&format!("/v1/cache/manifest/{}/{}", namespace, key));
+        let resp = self.add_auth(self.http.delete(url)).send().await?;
+        if !resp.status().is_success() {
+            let status = resp.status();
+            let text = resp.text().await.unwrap_or_default();
+            anyhow::bail!("delete manifest failed: HTTP {status}: {text}");
+        }
+        Ok(())
     }
 
     pub async fn save_finish(
@@ -138,16 +158,14 @@ impl CacheClient {
         paths: Vec<CachedPath>,
         blobs: Vec<BlobRef>,
     ) -> anyhow::Result<SaveFinishResponse> {
-        let resp = self
-            .add_auth(
-                self.http
-                    .post(self.url("/v1/cache/save/finish"))
-                    .json(&SaveFinishRequest {
-                        session_id: session_id.to_string(),
-                        paths,
-                        blobs,
-                    }),
-            )
+        let resp =
+            self.add_auth(self.http.post(self.url("/v1/cache/save/finish")).json(
+                &SaveFinishRequest {
+                    session_id: session_id.to_string(),
+                    paths,
+                    blobs,
+                },
+            ))
             .send()
             .await?;
         if !resp.status().is_success() {
